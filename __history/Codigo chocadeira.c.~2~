@@ -1,0 +1,57 @@
+#include<18F4550.h>
+#include <stdlib.h>
+#fuses XT,NOWDT,PUT,NOBROWNOUT,NOLVP    // bits de configuração
+
+
+
+
+
+
+
+
+#byte   porta = 0xf80 // atribui o nome "porta" ao registrador do port 0xf80
+#byte   portb = 0xf81 
+#byte   portd = 0xf83
+#byte   porte = 0xf84
+
+void main (void){
+
+//set_tris_a(0b00001111); // verificar se pinos analogicos necessitam de definição de tris
+set_tris_b(0b11000000);  // define os pinos RB0 E RB1 como entrada e os demais como saida
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

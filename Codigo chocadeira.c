@@ -1,0 +1,123 @@
+#include<18F4550.h>
+#include <stdlib.h>
+#fuses XT,NOWDT,PUT,NOBROWNOUT,NOLVP    // bits de configuração
+#use   delay(clock=20000000)// definir isso direito 
+#priority timer0, timer1 // define a prioridade dos timer
+
+//modo rápido de inicialização das portas
+#use   fast_io(a)
+#use   fast_io(b)
+#use   fast_io(d)
+#use   fast_io(e)
+#byte   porta = 0xf80 // atribui o nome "porta" ao registrador do port 0xf80
+#byte   portb = 0xf81 
+#byte   portd = 0xf83
+#byte   porte = 0xf84
+// pinos de entrada
+#bit NTC = porta.0
+#bit DHT11 = porta.1
+#bit POT_SET_TEMP = porta.2
+#bit POT_SET_UMI = porta.3
+#bit BOT_BLK_LTH = portb.0
+#bit BOT_MORE_INF = portb.1
+// pinos de saida
+#bit RELE_LAMP = portb.2
+#bit PIN_IN1_MOTPAS = portb.3
+#bit PIN_IN2_MOTPAS = portb.4
+#bit PIN_IN3_MOTPAS = portb.5
+#bit PIN_IN4_MOTPAS = portb.6
+#bit PIN_COOLER = portb.7
+
+
+#int_timer0
+void interrupçao_ntc (){
+
+
+
+
+
+
+
+// colocar aqui o codigo para obter o valor da temperatura
+/// temos que amostrar a temperatura de tempos em tempos
+// calculo do do estouro do timer 2
+// verificar a temp a cada 30 segundos
+
+}
+#int_timer1
+void interrupçao_dht11 (){
+// colcoar aqui o codigo para obter o valor da umidade
+// amostrar a umidade a cada 30 min
+// calculo do estouro do timer 1
+
+
+}
+
+
+
+void main (void){
+
+//set_tris_a(0b00001111); // verificar se pinos analogicos necessitam de definição de tris
+set_tris_b(0b11000000);  // define os pinos RB0 E RB1 como entrada e os demais como saida
+set_tris_b(0b11000000);
+set_tris_d(0b00000000);
+set_tris_e(0b00000100);
+ // CONFIGURAÇÃO DO TIMER 0 E TIMER 1 P/ INTERRUPÇÃO
+   /* setup_timer_0 (RTCC_INTERNAL | RTCC_8_BIT | RTCC_DIV_64);   ISSO É SO UM ESCOPO CONFIGURAR ISSO DA FORMA ADEQUADA 
+    setup_timer_1 (T1_EXTERNAL | T1_DIV_BY_2);
+    enable_interrupts(GLOBAL);//chave principal das interrupções
+    enable_interrupts(int_timer0); // interrupção do TIMER 0*/
+    
+  while(true){
+  
+  
+  
+  
+  
+  // take the loop here
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  }
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

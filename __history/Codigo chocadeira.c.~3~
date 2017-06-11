@@ -1,0 +1,98 @@
+#include<18F4550.h>
+#include <stdlib.h>
+#fuses XT,NOWDT,PUT,NOBROWNOUT,NOLVP    // bits de configuração
+#use   delay(clock=20000000)// definir isso direito 
+#priority timer0, timer1 // define a prioridade dos timer
+
+
+
+
+
+
+#byte   porta = 0xf80 // atribui o nome "porta" ao registrador do port 0xf80
+#byte   portb = 0xf81 
+#byte   portd = 0xf83
+#byte   porte = 0xf84
+
+#int_timer0
+void interrupçao_ntc (){
+
+// colocar aqui o codigo para obter o valor da temperatura
+/// temos que amostrar a temperatura de tempos em tempos
+// calculo do do estouro do timer 2
+// verificar a temp a cada 30 segundos
+
+}
+#int_timer2
+void interrupçao_dht11 (){
+// colcoar aqui o codigo para obter o valor da umidade
+// amostrar a umidade a cada 30 min
+// calculo do estouro do timer 1
+
+
+}
+
+
+
+void main (void){
+
+//set_tris_a(0b00001111); // verificar se pinos analogicos necessitam de definição de tris
+set_tris_b(0b11000000);  // define os pinos RB0 E RB1 como entrada e os demais como saida
+set_tris_b(0b11000000);
+set_tris_d(0b00000000);
+set_tris_e(0b00000100);
+
+
+  while(true){
+  
+  
+  
+  
+  
+  // take the loop here
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  }
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
