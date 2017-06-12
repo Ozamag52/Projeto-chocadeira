@@ -1,0 +1,207 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016-017 strtok.save
+018-01B _Randseed
+01C-01F ntc_val
+020-023 rntc
+024-027 b1
+028-02B c1
+02C-02F temp
+030-033 pow.x
+030-033 atan2.y
+030     interrupcao_ntc.@SCRATCH1
+031     interrupcao_ntc.@SCRATCH2
+032     interrupcao_ntc.@SCRATCH3
+033     interrupcao_ntc.@SCRATCH4
+034-037 atan2.x
+034-037 pow.y
+038-03B fmod.x
+038-03B atan2.z
+038     pow.@SCRATCH1
+039     pow.@SCRATCH2
+03A     pow.@SCRATCH3
+03B     pow.@SCRATCH4
+03C-03F exp.x
+03C-03F fmod.y
+03C-03F log.x
+03C.0   atan2.sign
+03D     atan2.quad
+040-043 log.y
+040-043 exp.y
+040-043 fmod.i
+044-047 log.res
+044-047 exp.res
+044     fmod.@SCRATCH1
+045     fmod.@SCRATCH2
+046     fmod.@SCRATCH3
+047     fmod.@SCRATCH4
+048-04B exp.r
+048-04B ceil.x
+048-04B floor.x
+048-04B log.r
+04C     exp.n
+04C-04F log.y2
+04C-04F CEIL_FLOOR.x
+04D.0   exp.s
+04E     exp.@SCRATCH1
+04F     exp.@SCRATCH2
+050     CEIL_FLOOR.n
+050     log.n
+050     exp.@SCRATCH3
+051-054 CEIL_FLOOR.y
+051     exp.@SCRATCH4
+051     log.@SCRATCH1
+052-053 @SITOF.P1
+052     log.@SCRATCH2
+053     log.@SCRATCH3
+054     log.@SCRATCH4
+055-058 CEIL_FLOOR.res
+055-058 @DIVFF.P1
+059-05A CEIL_FLOOR.l
+059-05C @DIVFF.P1
+05B.0   CEIL_FLOOR.s
+05C-05F @SFTOI.P1
+05C-05F @FLT.P2
+05C-05F @MULFF.P3
+05C     CEIL_FLOOR.@SCRATCH1
+05D     @DIVFF.@SCRATCH1
+05D     CEIL_FLOOR.@SCRATCH2
+05E     @DIVFF.@SCRATCH2
+05E     CEIL_FLOOR.@SCRATCH3
+05F     @DIVFF.@SCRATCH3
+05F     CEIL_FLOOR.@SCRATCH4
+060-063 @FLT.P1
+060-061 @ITOF.P2
+060-063 @MULFF.P3
+060-063 @ADDFF.P4
+060     @DIVFF.@SCRATCH4
+061     @DIVFF.@SCRATCH5
+062     @DIVFF.@SCRATCH6
+064-067 @ADDFF.P1
+064     @MULFF.@SCRATCH1
+064     @FLT.@SCRATCH1
+065     @MULFF.@SCRATCH2
+065     @FLT.@SCRATCH2
+066     @MULFF.@SCRATCH3
+068     @ADDFF.@SCRATCH1
+069     @ADDFF.@SCRATCH2
+06A     @ADDFF.@SCRATCH3
+06B     @ADDFF.@SCRATCH4
+06C     @ADDFF.@SCRATCH5
+06D     @ADDFF.@SCRATCH6
+06E     @ADDFF.@SCRATCH7
+06F     @ADDFF.@SCRATCH8
+F80.0   NTC
+F80     porta
+F80.1   DHT11
+F80.2   POT_SET_TEMP
+F80.3   POT_SET_UMI
+F81     portb
+F81.0   BOT_BLK_LTH
+F81.1   BOT_MORE_INF
+F81.2   RELE_LAMP
+F81.3   PIN_IN1_MOTPAS
+F81.4   PIN_IN2_MOTPAS
+F81.5   PIN_IN3_MOTPAS
+F81.6   PIN_IN4_MOTPAS
+F81.7   PIN_COOLER
+F83     PSP_DATA
+F83     portd
+F84     porte
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+0000A2  @ITOF
+0000D8  @MULFF
+0001CA  @DIVFF
+000324  @ADDFF
+00058E  @FLT
+000604  @SITOF
+00064C  log
+00098C  @SFTOI
+0009C4  CEIL_FLOOR
+000CF4  ceil
+000D0E  floor
+000D26  fmod
+000E82  exp
+001254  pow
+00152A  interrupcao_ntc
+0017DA  interrupcao_dht11
+0017E0  @cinit1
+0017E0  MAIN
+00181A  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+
+Project Directory:
+    C:\Users\henri\Documents\GitHub\Projeto-chocadeira\
+
+Project Files:
+    Codigo chocadeira.c                                     [12-jun-17 16:52  CRC=C734D935]
+    ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h [12-nov-13 14:35  CRC=5337E248]
+    ..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h [08-jun-11 14:39  CRC=0B6669CF]
+    ..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul-10 09:27  CRC=897CEC6C]
+    ..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [14-jul-11 10:13  CRC=23EDEC8F]
+    ..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-jan-08 13:55  CRC=2D1F019F]
+    ..\..\..\..\..\Program Files (x86)\PICC\Drivers\math.h  [28-set-12 11:35  CRC=546412C9]
+
+Source signature=A9252578
+
+Units:
+    Codigo chocadeira (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   Codigo chocadeira.xsym
+    Errors:      Codigo chocadeira.err
+    Ext Symbols: Codigo chocadeira.esym
+    INHX32:      Codigo chocadeira.hex
+    Symbols:     Codigo chocadeira.sym
+    List:        Codigo chocadeira.lst
+    Debug/COFF:  Codigo chocadeira.cof
+    Project:     Codigo chocadeira.ccspjt
+    Call Tree:   Codigo chocadeira.tre
+    Statistics:  Codigo chocadeira.STA

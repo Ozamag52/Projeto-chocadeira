@@ -1,6 +1,5 @@
 #include<18F4550.h>
 #include <stdlib.h>
-#INCLUDE <math.h>
 #fuses XT,NOWDT,PUT,NOBROWNOUT,NOLVP    // bits de configuração
 #use   delay(clock=20000000)// definir isso direito 
 #priority timer0, timer1 // define a prioridade dos timer
@@ -34,18 +33,20 @@ float rntc = 0;
 float b1=0;
 float c1=0;
 float temp=0;
-const float a = 0.0011303;
-const float b = 0.0002339;
-const double c = 0.00000008863;
+#define a = 0,0011303;
+#define b = 0,0002339;
+#define c = 0,00000008863;
 
 #int_timer0
 
 void interrupcao_ntc (){
-set_adc_channel(0); //  escolhe o pino analogico para ler 
-delay_us(10); // delay para começar a conversão 
-ntc_val = read_adc(); // le o valor na porta analogica
-ntc_val *=5; // 
+
+set_adc_channel(0);
+delay_us(10);
+ntc_val = read_adc();
+ntc_val *=5;
 ntc_val/=1023;
+
 rntc=33000/ntc_val;    
        rntc=rntc-10000;      
        b1=log(rntc);          
@@ -57,6 +58,8 @@ rntc=33000/ntc_val;
        temp=1/temp;           
        temp=temp-273.15;
 
+
+
 // colocar aqui o codigo para obter o valor da temperatura
 /// temos que amostrar a temperatura de tempos em tempos
 // calculo do do estouro do timer 2
@@ -64,7 +67,7 @@ rntc=33000/ntc_val;
 
 }
 #int_timer1
-void interrupcao_dht11 (){
+void interrupçao_dht11 (){
 // colcoar aqui o codigo para obter o valor da umidade
 // amostrar a umidade a cada 30 min
 // calculo do estouro do timer 1
@@ -75,8 +78,7 @@ void interrupcao_dht11 (){
 
 
 void main (void){
-setup_adc(  ADC_CLOCK_INTERNAL  ); //  configura o clock utilizado para o conversor ad
-setup_adc_ports( AN0_TO_AN3 );
+
 //set_tris_a(0b00001111); // verificar se pinos analogicos necessitam de definição de tris
 set_tris_b(0b11000000);  // define os pinos RB0 E RB1 como entrada e os demais como saida
 set_tris_b(0b11000000);
@@ -87,7 +89,8 @@ set_tris_e(0b00000100);
     setup_timer_1 (T1_EXTERNAL | T1_DIV_BY_2);
     enable_interrupts(GLOBAL);//chave principal das interrupções
     enable_interrupts(int_timer0); // interrupção do TIMER 0*/
-
+setup_adc(  ADC_CLOCK_INTERNAL  ); //  configura o clock utilizado para o conversor ad
+setup_adc_ports( AN0_TO_AN3 );
 
   while(true){
   
