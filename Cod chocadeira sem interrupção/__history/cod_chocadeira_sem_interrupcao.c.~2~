@@ -3,7 +3,6 @@
 #INCLUDE <math.h>
 #fuses XT,NOWDT,PUT,NOBROWNOUT,NOLVP    // bits de configuração
 #use   delay(clock=20000000)// definir isso direito 
-#priority timer0, timer1 // define a prioridade dos timer
 //modo rápido de inicialização das portas
 #use   fast_io(a)
 #use   fast_io(b)
@@ -36,9 +35,9 @@ const float a = 0.0011303;
 const float b = 0.0002339;
 const double c = 0.00000008863;
 
-#int_timer0
 
-void interrupcao_ntc (){
+
+void_ntc (){
 set_adc_channel(0); //  escolhe o pino analogico para ler 
 delay_us(10); // delay para começar a conversão 
 ntc_val = read_adc(); // le o valor na porta analogica
@@ -54,15 +53,11 @@ rntc=33000/ntc_val;
        temp=a+b1+c1;          
        temp=1/temp;           
        temp=temp-273.15;
-
-// colocar aqui o codigo para obter o valor da temperatura
-/// temos que amostrar a temperatura de tempos em tempos
-// calculo do do estouro do timer 2
-// verificar a temp a cada 30 segundos
+      return temp;
 
 }
-#int_timer1
-void interrupcao_dht11 (){
+
+void dht11 (){
 
 
 
@@ -94,11 +89,7 @@ set_tris_b(0b11000000);  // define os pinos RB0 E RB1 como entrada e os demais c
 set_tris_b(0b11000000);
 set_tris_d(0b00000000);
 set_tris_e(0b00000100);
- // CONFIGURAÇÃO DO TIMER 0 E TIMER 1 P/ INTERRUPÇÃO
-   /* setup_timer_0 (RTCC_INTERNAL | RTCC_8_BIT | RTCC_DIV_64);   ISSO É SO UM ESCOPO CONFIGURAR ISSO DA FORMA ADEQUADA 
-    setup_timer_1 (T1_EXTERNAL | T1_DIV_BY_2);
-    enable_interrupts(GLOBAL);//chave principal das interrupções
-    enable_interrupts(int_timer0); // interrupção do TIMER 0*/
+ 
 
 
   while(true){

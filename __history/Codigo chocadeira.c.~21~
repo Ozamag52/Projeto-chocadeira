@@ -4,6 +4,8 @@
 #fuses XT,NOWDT,PUT,NOBROWNOUT,NOLVP    // bits de configuração
 #use   delay(clock=20000000)// definir isso direito 
 #priority timer0, timer1 // define a prioridade dos timer
+ 
+
 //modo rápido de inicialização das portas
 #use   fast_io(a)
 #use   fast_io(b)
@@ -63,20 +65,6 @@ rntc=33000/ntc_val;
 }
 #int_timer1
 void interrupcao_dht11 (){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // colcoar aqui o codigo para obter o valor da umidade
 // amostrar a umidade a cada 30 min
 // calculo do estouro do timer 1

@@ -12,8 +12,9 @@ Type=4
 [mru-list]
 1=Codigo chocadeira.c
 [Opened Files]
-1=Codigo chocadeira.c
-2=
+1=Implementação cod dht11\Cod dht11.c
+2=Cod chocadeira sem interrupção\cod_chocadeira_sem_interrupcao.c
+3=
 [Units]
 Count=1
 1=Codigo chocadeira (main)
