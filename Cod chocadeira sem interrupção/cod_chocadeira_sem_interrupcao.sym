@@ -1,0 +1,198 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-005 strtok.save
+006-009 _Randseed
+00A-017 message2
+018.0   Time_out
+019     RH_byte1
+01A     RH_byte2
+01B     CheckSum
+01C-01F ntc_val
+020-023 rntc
+024-027 b1
+028-02B c1
+02C-02F temp
+030-033 temperatura
+034-037 umidade
+038-03C WaveStep
+03D-041 FullStep
+042-04A HalfStep
+04B-04E atan2.y
+04B-04E pow.x
+04B     NTC.@SCRATCH1
+04C     NTC.@SCRATCH2
+04D     NTC.@SCRATCH3
+04E     NTC.@SCRATCH4
+04F-052 pow.y
+04F-052 atan2.x
+053-056 fmod.x
+053-056 atan2.z
+053     pow.@SCRATCH1
+054     pow.@SCRATCH2
+055     pow.@SCRATCH3
+056     pow.@SCRATCH4
+057-05A fmod.y
+057-05A exp.x
+057.0   atan2.sign
+057-05A log.x
+058     atan2.quad
+05B-05E exp.y
+05B-05E fmod.i
+05B-05E log.y
+05F-062 exp.res
+05F-062 log.res
+05F     fmod.@SCRATCH1
+060     fmod.@SCRATCH2
+061     fmod.@SCRATCH3
+062     fmod.@SCRATCH4
+063-066 floor.x
+063-066 exp.r
+063-066 ceil.x
+063-066 log.r
+067-06A CEIL_FLOOR.x
+067-06A log.y2
+067     exp.n
+068.0   exp.s
+069     exp.@SCRATCH1
+06A     exp.@SCRATCH2
+06B     CEIL_FLOOR.n
+06B     log.n
+06B     exp.@SCRATCH3
+06C-06F CEIL_FLOOR.y
+06C     exp.@SCRATCH4
+06C     log.@SCRATCH1
+06D-06E @SITOF.P1
+06D     log.@SCRATCH2
+06E     log.@SCRATCH3
+06F     log.@SCRATCH4
+070-073 @DIVFF.P1
+070-073 CEIL_FLOOR.res
+074-077 @DIVFF.P1
+074-075 CEIL_FLOOR.l
+076.0   CEIL_FLOOR.s
+077-07A @FLT.P1
+077-07A @MULFF.P2
+077-07A @SFTOI.P3
+077     CEIL_FLOOR.@SCRATCH1
+078     @DIVFF.@SCRATCH1
+078     CEIL_FLOOR.@SCRATCH2
+079     @DIVFF.@SCRATCH2
+079     CEIL_FLOOR.@SCRATCH3
+07A     @DIVFF.@SCRATCH3
+07A     CEIL_FLOOR.@SCRATCH4
+07B-07E @MULFF.P1
+07B-07E @ADDFF.P2
+07B-07C @ITOF.P3
+07B-07E @FLT.P4
+07B     @DIVFF.@SCRATCH4
+07C     @DIVFF.@SCRATCH5
+07D     @DIVFF.@SCRATCH6
+07F-082 @ADDFF.P1
+07F     @MULFF.@SCRATCH1
+07F     @FLT.@SCRATCH1
+080     @MULFF.@SCRATCH2
+080     @FLT.@SCRATCH2
+081     @MULFF.@SCRATCH3
+083     @ADDFF.@SCRATCH1
+084     @ADDFF.@SCRATCH2
+085     @ADDFF.@SCRATCH3
+086     @ADDFF.@SCRATCH4
+087     @ADDFF.@SCRATCH5
+088     @ADDFF.@SCRATCH6
+089     @ADDFF.@SCRATCH7
+08A     @ADDFF.@SCRATCH8
+F80     porta
+F80.0   NTC
+F80.1   DHT11
+F80.2   POT_SET_TEMP
+F80.3   POT_SET_UMI
+F81     portb
+F81.0   BOT_BLK_LTH
+F81.1   BOT_MORE_INF
+F81.2   RELE_LAMP
+F81.3   PIN_IN1_MOTPAS
+F81.4   PIN_IN2_MOTPAS
+F81.5   PIN_IN3_MOTPAS
+F81.6   PIN_IN4_MOTPAS
+F81.7   PIN_COOLER
+F83     PSP_DATA
+F83     portd
+F84     porte
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @ITOF
+00003A  @MULFF
+00012C  @DIVFF
+000286  @ADDFF
+0004F0  @FLT
+000566  @SITOF
+0005AE  log
+0008EE  @SFTOI
+000926  CEIL_FLOOR
+000C56  ceil
+000C70  floor
+000C88  fmod
+000DE4  exp
+0011B6  pow
+00148C  NTC
+00174A  MAIN
+00174A  @cinit1
+001782  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+
+Project Directory:
+    C:\Users\henri\Documents\GitHub\Projeto-chocadeira\Cod chocadeira sem interrupção\
+
+Project Files:
+    cod_chocadeira_sem_interrupcao.c                        [20-jun-17 20:32  CRC=EF7FDDF8]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h [12-nov-13 14:35  CRC=5337E248]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h [08-jun-11 14:39  CRC=0B6669CF]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul-10 09:27  CRC=897CEC6C]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [14-jul-11 10:13  CRC=23EDEC8F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-jan-08 13:55  CRC=2D1F019F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\math.h [28-set-12 11:35  CRC=546412C9]
+
+Source signature=D1702A3B
+
+Units:
+    cod_chocadeira_sem_interrupcao (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   cod_chocadeira_sem_interrupcao.xsym
+    Errors:      cod_chocadeira_sem_interrupcao.err
+    Ext Symbols: cod_chocadeira_sem_interrupcao.esym
+    INHX32:      cod_chocadeira_sem_interrupcao.hex
+    Symbols:     cod_chocadeira_sem_interrupcao.sym
+    List:        cod_chocadeira_sem_interrupcao.lst
+    Debug/COFF:  cod_chocadeira_sem_interrupcao.cof
+    Project:     cod_chocadeira_sem_interrupcao.ccspjt
+    Call Tree:   cod_chocadeira_sem_interrupcao.tre
+    Statistics:  cod_chocadeira_sem_interrupcao.STA

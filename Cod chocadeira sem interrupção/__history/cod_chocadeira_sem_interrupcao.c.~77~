@@ -44,6 +44,9 @@ float umidade;
 const float a = 0.0011303;
 const float b = 0.0002339;
 const double c = 0.00000008863;
+char WaveStep[] = {4, 0b0001, 0b0010, 0b0100, 0b1000};
+char FullStep[] = {4, 0b0011, 0b0110, 0b1100, 0b1001};
+char HalfStep[] = {8, 0b0001, 0b0011, 0b0010, 0b0110, 0b00100, 0b1100, 0b1000, 0b1001};
 // FUNÇÃO POR INICIAR A DHT11
 
 /*void start_signal(){
@@ -156,15 +159,22 @@ set_tris_e(0b00000100);
   temperatura = ntc();
  //umidade = dht11();
   
-    if(temperatura<=38){
-     PIN_COOLER =0 ;
-     RELE_LAMP = 1 ;
-    }
-    else(temperatura>38){
+    if(temperatura>38){
     PIN_COOLER =1 ;
-    RELE_LAMP = 0 ; 
+    
+    
+    
     }
-    delay_ms(2000);   
+    
+  
+  
+ 
+  
+  
+  
+  
+  
+  
   }
   
   

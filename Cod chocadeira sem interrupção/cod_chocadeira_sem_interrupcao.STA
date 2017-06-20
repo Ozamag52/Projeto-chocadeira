@@ -1,0 +1,64 @@
+
+ROM used:   6218/32768 (19%)
+            6218/32768 (19%) including unused fragments
+
+            1.2 Average locations per line
+            8.1 Average locations per statement
+
+RAM used:   75/2048 (4%) at main() level
+            139/2048 (7%) worst case
+
+Stack used: 6 worst case (6 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  215    27   4  cod_chocadeira_sem_interrupcao.c
+  837     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h
+ 1351   359  47  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h
+   32     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h
+  423   125  16  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h
+   28     0   0  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h
+ 2229   257  33  ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\math.h
+----- -----
+ 5115   768 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0    242   2   11             @MULFF
+0     54   0    2             @ITOF
+0    618   5   16             @ADDFF
+0    346   3   14             @DIVFF
+0    816   7   20  1121 10.1  CEIL_FLOOR
+0    118   1   10             @FLT
+0     56   0    4             @SFTOI
+0     24   0    4    43  2.1  floor
+0     26   0    4    44  1.9  ceil
+0    348   3   16   259  6.9  fmod
+0    978   8   22  1071  8.0  exp
+0     72   1    2             @SITOF
+0    832   7   25   979 10.0  log
+0    726   6   12   556  7.5  pow
+0    702   6    4   527  5.6  NTC
+0    256   2    0   200  3.1  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               9
+    Statements              768
+    Comments                1261
+    Volume (V)              7054
+    Difficulty (D)          55.6
+    Effort to implement (E) 391940
+    Time to implement (T)   6 hours, 3 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   18
+    Maintainability (MI)    39
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07FFE  6214  26550  
+
+
+

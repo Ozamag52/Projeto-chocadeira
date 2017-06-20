@@ -1,8 +1,8 @@
 D G "LOG2_INV" 6 2063 "3.32192809488736234787"
-D G "__PCH__" 0 94 ""5.015""
-D G "__DEVICE__" 0 94 "4550"
-D G "__DATE__" 0 94 ""13-jun-17""
-D G "__TIME__" 0 94 ""17:06:54"" "Standard Header file for the PIC18F4550 device ////////////////"
+D G "__PCH__" 0 215 ""5.015""
+D G "__DEVICE__" 0 215 "4550"
+D G "__DATE__" 0 215 ""20-jun-17""
+D G "__TIME__" 0 215 ""20:32:15"" "Standard Header file for the PIC18F4550 device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
 v L "value" 1 45 "int8" `54 
 f B "set_tris_a" 1 45 "void(int8 value)" `53 
@@ -1476,35 +1476,34 @@ C L "ldexp" 6 2 6 "FUNCTION"
 V L "value" 6 2209 "float" `1044 
 V L "exp" 6 2209 "sint8" `1045 
 F G "ldexp" 6 2210 "float(float value,sint8 exp)" `1043 
-V G "message2" 0 31 "int8[1]" `1066 
-V G "Time_out" 0 32 "int1" `1067 
-V G "RH_byte1" 0 33 "int8" `1068 
-V G "RH_byte2" 0 33 "int8" `1069 
-V G "CheckSum" 0 33 "int8" `1070 
-V G "ntc_val" 0 35 "float" `1071 
-V G "rntc" 0 36 "float" `1072 
-V G "b1" 0 37 "float" `1073 
-V G "c1" 0 38 "float" `1074 
-V G "temp" 0 39 "float" `1075 
-V G "temperatura" 0 40 "float" `1076 
-V G "umidade" 0 41 "float" `1077 
-V G "a" 0 42 "float" `1078 
-V G "b" 0 43 "float" `1080 
-V G "c" 0 44 "float" `1082 
-C L "check_response" 0 6 10 "FUNCTION"
-F G "check_response" 0 57 "int8()" `1084 
-C L "check_response" 0 6 1 "FUNCTION"
-C L "check_response" 0 6 1 "FUNCTION"
-C L "Read_Data" 0 6 1 "FUNCTION"
-F G "Read_Data" 0 69 "int8()" `1085 
-V L "i" 0 70 "int8" `1086 
-V L "k" 0 70 "int8" `1087 
-V L "_data" 0 70 "int8" `1088 
-C L "Read_Data" 0 6 1 "FUNCTION"
-C L "Read_Data" 0 6 1 "FUNCTION"
-C L "Read_Data" 0 6 1 "FUNCTION"
-C L "Read_Data" 0 6 1 "FUNCTION"
-C L "Read_Data" 0 6 1 "FUNCTION"
+V G "message2" 0 33 "int8[1]" `1066 
+V G "Time_out" 0 34 "int1" `1067 
+V G "RH_byte1" 0 35 "int8" `1068 
+V G "RH_byte2" 0 35 "int8" `1069 
+V G "CheckSum" 0 35 "int8" `1070 
+V G "ntc_val" 0 37 "float" `1071 
+V G "rntc" 0 38 "float" `1072 
+V G "b1" 0 39 "float" `1073 
+V G "c1" 0 40 "float" `1074 
+V G "temp" 0 41 "float" `1075 
+V G "temperatura" 0 42 "float" `1076 
+V G "umidade" 0 43 "float" `1077 
+V G "a" 0 44 "float" `1078 
+V G "b" 0 45 "float" `1080 
+V G "c" 0 46 "float" `1082 
+V G "WaveStep" 0 47 "int8[1]" `1084 
+V G "FullStep" 0 48 "int8[1]" `1085 
+V G "HalfStep" 0 49 "int8[1]" `1086 
+C L "NTC" 0 6 60 "FUNCTION"
+F G "NTC" 0 124 "float()" `1087 
+C L "NTC" 0 6 1 "FUNCTION"
+C L "NTC" 0 6 1 "FUNCTION"
+C L "NTC" 0 6 1 "FUNCTION"
+F G "MAIN" 0 147 "void()" `1088 
+C L "MAIN" 0 6 1 "FUNCTION"
+C L "MAIN" 0 6 1 "FUNCTION"
+C L "MAIN" 0 6 1 "FUNCTION"
+C L "MAIN" 0 6 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

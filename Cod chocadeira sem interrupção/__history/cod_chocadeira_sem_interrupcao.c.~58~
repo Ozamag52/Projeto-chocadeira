@@ -12,8 +12,6 @@
 #byte   portb = 0xf81 
 #byte   portd = 0xf83
 #byte   porte = 0xf84
-
-
 // pinos de entrada
 #bit NTC = porta.0
 #bit DHT11 = porta.1
@@ -46,14 +44,14 @@ const float b = 0.0002339;
 const double c = 0.00000008863;
 // FUNÇÃO POR INICIAR A DHT11
 
-/*void start_signal(){
-   Data_Pin_Direction = 0;           // Configure connection pin as output
-  Data_Pin = 0;                        // Connection pin output low
+void start_signal(){
+   //Data_Pin_Direction = 0;           // Configure connection pin as output
+ // Data_Pin = 0;                        // Connection pin output low
     delay_ms(25);
-     Data_Pin = 1;                        // Connection pin output high
+    // Data_Pin = 1;                        // Connection pin output high
   delay_us(30); 
-   Data_Pin_Direction = 1;              // Configure connection pin as input
-}*/
+  // Data_Pin_Direction = 1;              // Configure connection pin as input
+}
 
 // FUNÇAÕ POR VERIFICAR SE O SENSOR ESTA RESPONDENDO 
 /*short check_response(){
@@ -68,17 +66,17 @@ const double c = 0.00000008863;
 */
 
 // FUNÇÃO PARA A OBTENÇÃO DO VALOR DE HUMIDADE
-/*unsigned int8 Read_Data(){
+unsigned int8 Read_Data(){
  unsigned int8 i, k, _data = 0; // k is used to count 1 bit reading duration
  if(Time_out)
  break;
  for(i=0;i<8;i++){
   k=0;
- while(!Data_Pin){                         // Wait until pin goes high
+    while(!Data_Pin){                          // Wait until pin goes high
       k++;
       if (k > 100) {Time_out = 1; break;}
       delay_us(1);}
-    delay_us(30);
+    delay_us(30);
     if(!Data_Pin)
       bit_clear(_data, (7 - i));               // Clear bit (7 - i)
     else{
@@ -90,12 +88,12 @@ const double c = 0.00000008863;
     }
   }
   return _data;
-}*/
+}
 
 // FUNÇÃO PRINCIPAL QUE RETORNARA A UMIDADE 
-/*void dht11(){
+void dht11(){
    delay_ms(1000);
-   Time_out = 0;
+   Time_out = 0;
    
    Start_signal();
    if(check_response()){                    // If there is response from sensor
@@ -108,17 +106,17 @@ const double c = 0.00000008863;
              message2[10] = RH_Byte2/10 + 48;
              /*  lcd_putc('\f');                       // LCD clear
              lcd_gotoxy(1, 2);                     // Go to column 1 row 2
-             printf(lcd_putc, message2);           // Display message2                                
+             printf(lcd_putc, message2);           // Display message2 */                                
            }
                         }
    return message2;
-}*/
+}
 
 
 
 
 
-float ntc(){
+void_ntc (){
 set_adc_channel(0); //  escolhe o pino analogico para ler 
 delay_us(10); // delay para começar a conversão 
 ntc_val = read_adc(); // le o valor na porta analogica
@@ -146,6 +144,7 @@ setup_adc(  ADC_CLOCK_INTERNAL  ); //  configura o clock utilizado para o conver
 setup_adc_ports( AN0_TO_AN3 );
 //set_tris_a(0b00001111); // verificar se pinos analogicos necessitam de definição de tris
 set_tris_b(0b11000000);  // define os pinos RB0 E RB1 como entrada e os demais como saida
+set_tris_b(0b11000000);
 set_tris_d(0b00000000);
 set_tris_e(0b00000100);
  
@@ -154,17 +153,18 @@ set_tris_e(0b00000100);
   while(true){
   
   temperatura = ntc();
- //umidade = dht11();
+  umidade = dht11();
   
-    if(temperatura<=38){
-     PIN_COOLER =0 ;
-     RELE_LAMP = 1 ;
-    }
-    else(temperatura>38){
-    PIN_COOLER =1 ;
-    RELE_LAMP = 0 ; 
-    }
-    delay_ms(2000);   
+  // take the loop here
+  
+  
+ 
+  
+  
+  
+  
+  
+  
   }
   
   
