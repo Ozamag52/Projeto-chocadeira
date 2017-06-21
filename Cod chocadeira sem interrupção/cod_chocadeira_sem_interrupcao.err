@@ -1,12 +1,6 @@
->>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 33(6,14): Variable never used:   message2
->>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 34(7,15): Variable never used:   Time_out
->>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 35(16,24): Variable never used:   RH_byte1
->>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 35(26,34): Variable never used:   RH_byte2
->>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 35(36,44): Variable never used:   CheckSum
->>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 43(7,14): Variable never used:   umidade
->>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 47(6,14): Variable never used:   WaveStep
->>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 48(6,14): Variable never used:   FullStep
->>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 49(6,14): Variable never used:   HalfStep
-      Memory usage:   ROM=19%      RAM=4% - 7%
-      0 Errors,  9 Warnings.
-Build Successful.
+*** Error 23 "cod_chocadeira_sem_interrupcao.c" Line 15(8,9): Can not set this option this far into the code
+*** Error 48 "cod_chocadeira_sem_interrupcao.c" Line 15(9,12): Expecting a (
+*** Error 43 "cod_chocadeira_sem_interrupcao.c" Line 15(13,15): Expecting a declaration
+*** Error 76 "cod_chocadeira_sem_interrupcao.c" Line 165(25,26): Expect ;
+      4 Errors,  0 Warnings.
+Build Failed.

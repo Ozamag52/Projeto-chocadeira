@@ -12,6 +12,7 @@
 #byte   portb = 0xf81 
 #byte   portd = 0xf83
 #byte   porte = 0xf84
+#DEVICE ADC=10// verificar isso
 
 
 // pinos de entrada
@@ -142,7 +143,8 @@ rntc=33000/ntc_val;
 
 
 void main (void){
-setup_adc(  ADC_CLOCK_INTERNAL  ); //  configura o clock utilizado para o conversor ad
+
+setup_adc(  ADC_CLOCK_INTERNAL  ); //  configura o clock utilizado para o conversor ad e o pior clock ele usa a malha RC é lenta 
 setup_adc_ports( AN0_TO_AN3 );
 //set_tris_a(0b00001111); // verificar se pinos analogicos necessitam de definição de tris
 set_tris_b(0b11000000);  // define os pinos RB0 E RB1 como entrada e os demais como saida
