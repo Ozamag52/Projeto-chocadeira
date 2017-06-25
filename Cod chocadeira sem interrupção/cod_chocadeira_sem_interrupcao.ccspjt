@@ -6,14 +6,15 @@ Compiler=PCH
 [Target Data]
 FileList=cod_chocadeira_sem_interrupcao.c
 [Directories]
-Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;C:\Program Files (x86)\PICC\Drivers\C:\Program Files (x86)\PICC\Devices\
 [cod_chocadeira_sem_interrupcao.c]
 Type=4
 [mru-list]
 1=cod_chocadeira_sem_interrupcao.c
 [Opened Files]
-1=..\..\..\..\Downloads\Aula-61-Motor-de-Passo\MotorDePasso.c
+1=cod_chocadeira_sem_interrupcao.c
 2=
+3=
 [Units]
 Count=1
 1=cod_chocadeira_sem_interrupcao (main)

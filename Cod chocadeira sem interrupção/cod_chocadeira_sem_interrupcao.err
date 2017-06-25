@@ -1,6 +1,4 @@
-*** Error 23 "cod_chocadeira_sem_interrupcao.c" Line 15(8,9): Can not set this option this far into the code
-*** Error 48 "cod_chocadeira_sem_interrupcao.c" Line 15(9,12): Expecting a (
-*** Error 43 "cod_chocadeira_sem_interrupcao.c" Line 15(13,15): Expecting a declaration
-*** Error 76 "cod_chocadeira_sem_interrupcao.c" Line 165(25,26): Expect ;
-      4 Errors,  0 Warnings.
-Build Failed.
+>>> Warning 208 "cod_chocadeira_sem_interrupcao.c" Line 155(5,27): Function not void and does not return a value  tratamento_de_bouncing
+      Memory usage:   ROM=23%      RAM=3% - 6%
+      0 Errors,  1 Warnings.
+Build Successful.

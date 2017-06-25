@@ -1,0 +1,69 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     i
+005     mexeovos1.j
+006     mexeovos1.@SCRATCH1
+007     @delay_us1.P1
+007     @delay_ms1.P2
+F81     portb
+F81.1   PIN_SERV
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @delay_us1
+00001E  @delay_ms1
+000044  mexeovos1
+0000CC  MAIN
+0000CC  @cinit1
+0000DC  @cinit2
+
+Project Directory:
+    C:\Users\henri\Documents\GitHub\Projeto-chocadeira\Cod chocadeira sem interrupção\Codigos modularizados\Servo motor\
+
+Project Files:
+    servo motor codigo.c                                    [24-jun-17 18:13  CRC=4998EE75]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h [12-nov-13 14:35  CRC=5337E248]
+
+Source signature=F008B305
+
+Units:
+    servo motor codigo (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   servo motor codigo.xsym
+    Errors:      servo motor codigo.err
+    Ext Symbols: servo motor codigo.esym
+    INHX32:      servo motor codigo.hex
+    Symbols:     servo motor codigo.sym
+    List:        servo motor codigo.lst
+    Debug/COFF:  servo motor codigo.cof
+    Project:     servo motor codigo.ccspjt
+    Call Tree:   servo motor codigo.tre
+    Statistics:  servo motor codigo.STA

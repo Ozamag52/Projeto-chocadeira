@@ -1,0 +1,96 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+006.7   Data_Pin
+009-00A @READ_PROGRAM_MEMORY8.P1
+00C     @SCRATCH
+00D     @SCRATCH
+00D     _RETURN_
+00E     @SCRATCH
+00F     @SCRATCH
+010-01D message1
+01E-02B message2
+02C.0   Time_out
+02D     T_byte1
+02E     T_byte2
+02F     RH_byte1
+030     RH_byte2
+031     CheckSum
+032     lcd_init.i
+032     Read_Data.i
+032     @DIV88.P1
+032     MAIN.@SCRATCH1
+033     lcd_putc.c
+033     Read_Data.k
+033-036 lcd_init.LCD_INIT_STRING
+033     @DIV88.P1
+034     lcd_gotoxy.x
+034     Read_Data._data
+034     @DIV88.@SCRATCH1
+035     lcd_gotoxy.y
+035     Read_Data.@SCRATCH1
+036     lcd_gotoxy.address
+037     @delay_ms1.P1
+037     lcd_init.@SCRATCH1
+037     lcd_gotoxy.@SCRATCH1
+038     lcd_send_byte.address
+039     lcd_send_byte.n
+03A     lcd_read_byte.low
+03A     lcd_send_byte.@SCRATCH1
+03B     lcd_read_byte.high
+03B     lcd_send_nibble.n
+03C     lcd_read_nibble.n
+03C     lcd_read_byte.@SCRATCH1
+03D     lcd_read_nibble.@SCRATCH1
+086.7   Data_Pin_Direction
+
+ROM Allocation:
+000004  @const556.call
+000012  @const560.call
+000026  @const561.call
+000036  @const562.call
+00004A  @delay_ms1
+00005D  lcd_send_nibble
+000089  lcd_read_nibble
+0000BA  lcd_send_byte
+0000C2  lcd_read_byte
+000116  lcd_init
+000159  lcd_gotoxy
+00016B  lcd_putc
+000197  start_signal
+0001A8  check_response
+0001C0  Read_Data
+00020B  @DIV88
+000220  MAIN
+000220  @cinit1
+000223  @cinit2
+
+Project Directory:
+    C:\Users\henri\Documents\GitHub\Projeto-chocadeira\Cod chocadeira sem interrupção\Codigos modularizados\dht11\
+
+Project Files:
+    original.c                                              [24-jun-17 18:58  CRC=EA80B7AA]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F84A.h [12-nov-13 14:34  CRC=4E09ACDB]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\lcd.c [19-set-13 15:38  CRC=D1A6378A]
+
+Source signature=DBD6D399
+
+Units:
+    original (main)
+
+Compiler Settings:
+    Processor:      PIC16F84A
+    Pointer Size:   8
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   original.xsym
+    Errors:      original.err
+    Ext Symbols: original.esym
+    INHX8:       original.hex
+    Symbols:     original.sym
+    List:        original.lst
+    Debug/COFF:  original.cof
+    Project:     original.ccspjt
+    Call Tree:   original.tre
+    Statistics:  original.STA

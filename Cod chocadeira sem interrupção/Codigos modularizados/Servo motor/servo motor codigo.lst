@@ -1,0 +1,193 @@
+CCS PCH C Compiler, Version 5.015, 5967               24-jun-17 18:13
+
+               Filename:   C:\Users\henri\Documents\GitHub\Projeto-chocadeira\Cod chocadeira sem interrupção\Codigos modularizados\Servo motor\servo motor codigo.lst
+
+               ROM used:   230 bytes (1%)
+                           Largest free fragment is 32538
+               RAM used:   5 (0%) at main() level
+                           8 (0%) worst case
+               Stack used: 2 locations
+               Stack size: 31
+
+*
+0000:  GOTO   00CC
+.................... #include<18F4550.h> 
+.................... //////////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4550 
+....................  
+.................... #list 
+....................  
+....................  
+....................  
+.................... #fuses XT,NOWDT,PUT,NOBROWNOUT,NOLVP   // configuração dos fuses do pic  
+.................... #use   delay(clock=20000000)// Informa a função delay, o clock utilizado 
+0004:  MOVLW  03
+0006:  SUBWF  07,F
+0008:  BNC   001C
+000A:  CLRF   FEA
+000C:  MOVLW  07
+000E:  MOVWF  FE9
+0010:  MOVF   FEF,W
+0012:  BZ    001C
+0014:  BRA    0018
+0016:  BRA    0018
+0018:  DECFSZ FEF,F
+001A:  BRA    0016
+001C:  RETURN 0
+001E:  CLRF   FEA
+0020:  MOVLW  07
+0022:  MOVWF  FE9
+0024:  MOVF   FEF,W
+0026:  BZ    0042
+0028:  MOVLW  06
+002A:  MOVWF  01
+002C:  CLRF   00
+002E:  DECFSZ 00,F
+0030:  BRA    002E
+0032:  DECFSZ 01,F
+0034:  BRA    002C
+0036:  MOVLW  7B
+0038:  MOVWF  00
+003A:  DECFSZ 00,F
+003C:  BRA    003A
+003E:  DECFSZ FEF,F
+0040:  BRA    0028
+0042:  RETURN 0
+.................... #use   fast_io(b)//modo rápido de inicialização das portas 
+.................... #byte   portb = 0xf81  
+.................... #bit PIN_SERV = portb.1 
+.................... unsigned int i ; 
+.................... void mexeovos1(){ 
+.................... // Essa função é responsável por controlar o servo motor que mexe os ovos 
+.................... for( int j=0; j<=1000; j++){ 
+0044:  CLRF   05
+.................... for(i=0;  i<50; i++){ 
+0046:  CLRF   04
+0048:  MOVF   04,W
+004A:  SUBLW  31
+004C:  BNC   0070
+.................... PIN_SERV=1; 
+004E:  BSF    F81.1
+.................... delay_us(800); 
+0050:  MOVLW  04
+0052:  MOVWF  06
+0054:  MOVLW  C7
+0056:  MOVWF  07
+0058:  RCALL  0004
+005A:  DECFSZ 06,F
+005C:  BRA    0054
+.................... PIN_SERV=0; 
+005E:  BCF    F81.1
+.................... delay_us(19200); 
+0060:  MOVLW  13
+0062:  MOVWF  07
+0064:  RCALL  001E
+0066:  MOVLW  C8
+0068:  MOVWF  07
+006A:  RCALL  0004
+006C:  INCF   04,F
+006E:  BRA    0048
+.................... } 
+.................... delay_ms(2000); 
+0070:  MOVLW  08
+0072:  MOVWF  06
+0074:  MOVLW  FA
+0076:  MOVWF  07
+0078:  RCALL  001E
+007A:  DECFSZ 06,F
+007C:  BRA    0074
+.................... for(i=0;  i<50; i++){ 
+007E:  CLRF   04
+0080:  MOVF   04,W
+0082:  SUBLW  31
+0084:  BNC   00B6
+.................... PIN_SERV=1; 
+0086:  BSF    F81.1
+.................... delay_us(1500); 
+0088:  MOVLW  01
+008A:  MOVWF  07
+008C:  RCALL  001E
+008E:  MOVLW  02
+0090:  MOVWF  06
+0092:  MOVLW  F9
+0094:  MOVWF  07
+0096:  RCALL  0004
+0098:  DECFSZ 06,F
+009A:  BRA    0092
+.................... PIN_SERV=0; 
+009C:  BCF    F81.1
+.................... delay_us(18500); 
+009E:  MOVLW  12
+00A0:  MOVWF  07
+00A2:  RCALL  001E
+00A4:  MOVLW  02
+00A6:  MOVWF  06
+00A8:  MOVLW  F9
+00AA:  MOVWF  07
+00AC:  RCALL  0004
+00AE:  DECFSZ 06,F
+00B0:  BRA    00A8
+00B2:  INCF   04,F
+00B4:  BRA    0080
+.................... } 
+.................... delay_ms(2000); 
+00B6:  MOVLW  08
+00B8:  MOVWF  06
+00BA:  MOVLW  FA
+00BC:  MOVWF  07
+00BE:  RCALL  001E
+00C0:  DECFSZ 06,F
+00C2:  BRA    00BA
+00C4:  INCF   05,F
+00C6:  BRA    0046
+.................... } 
+00C8:  GOTO   00E2 (RETURN)
+....................  
+.................... } 
+....................  
+....................  
+....................  
+....................  
+....................  
+....................  
+.................... void main(){ 
+00CC:  CLRF   FF8
+00CE:  BCF    FD0.7
+00D0:  MOVF   FC1,W
+00D2:  ANDLW  C0
+00D4:  IORLW  0F
+00D6:  MOVWF  FC1
+00D8:  MOVLW  07
+00DA:  MOVWF  FB4
+.................... set_tris_b(0b11000000); 
+00DC:  MOVLW  C0
+00DE:  MOVWF  F93
+.................... mexeovos1(); 
+00E0:  BRA    0044
+....................  
+....................  
+.................... while(true){ 
+00E2:  BRA    00E2
+....................  
+....................  
+.................... } 
+.................... } 
+00E4:  SLEEP 
+
+Configuration Fuses:
+   Word  1: C03F   PLL12 CPUDIV4 USBDIV XT FCMEN IESO
+   Word  2: 1E38   PUT NOBROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

@@ -1,0 +1,13 @@
+ÀÄservo motor codigo
+   ÀÄMAIN  0/26  Ram=0
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÀÄmexeovos1  0/136  Ram=1
+         ÃÄ@delay_us1  0/26  Ram=1
+         ÃÄ@delay_ms1  0/38  Ram=1
+         ÃÄ@delay_us1  0/26  Ram=1
+         ÃÄ@delay_ms1  0/38  Ram=1
+         ÃÄ@delay_ms1  0/38  Ram=1
+         ÃÄ@delay_us1  0/26  Ram=1
+         ÃÄ@delay_ms1  0/38  Ram=1
+         ÃÄ@delay_us1  0/26  Ram=1
+         ÀÄ@delay_ms1  0/38  Ram=1

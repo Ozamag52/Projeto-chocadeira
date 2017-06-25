@@ -1,0 +1,44 @@
+#include<18F4550.h>
+
+
+#fuses XT,NOWDT,PUT,NOBROWNOUT,NOLVP   // configuração dos fuses do pic 
+#use   delay(clock=20000000)// Informa a função delay, o clock utilizado
+#use   fast_io(b)//modo rápido de inicialização das portas
+#byte   portb = 0xf81 
+#bit PIN_SERV = portb.1
+int cont=0;
+void mexeovos1(){
+// Essa função é responsável por controlar o servo motor que mexe os ovos
+if(cont%2 == 0){
+PIN_SERV = 0 ;
+delay_us(17700);
+PIN_SERV = 1;
+delay_us(2300);
+}
+else{
+PIN_SERV = 0 ;
+delay_ms(5000);
+delay_us(18500);
+PIN_SERV = 1;
+delay_us(1500);
+}
+
+
+
+
+}
+
+
+
+
+void main(){
+set_tris_b(0b11000000);
+
+
+mexeovos1();
+
+
+while(true){
+
+}
+}

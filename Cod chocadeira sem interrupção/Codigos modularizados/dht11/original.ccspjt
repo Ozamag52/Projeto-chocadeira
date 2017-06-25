@@ -1,0 +1,20 @@
+[PROJECT]
+Target=original.hex
+Processor_Text=PIC16F84A
+CCSVersion=5.015
+Compiler=PCM
+[Target Data]
+FileList=original.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\DriversC:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[original.c]
+Type=4
+[mru-list]
+1=original.c
+[Opened Files]
+1=original.c
+2=..\..\cod_chocadeira_sem_interrupcao.c
+3=
+[Units]
+Count=1
+1=original (main)

@@ -1,0 +1,200 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-005 strtok.save
+006-009 _Randseed
+00A-00D ntc_val
+00E-011 rntc
+012-015 b1
+016-019 c1
+01A-01D temp
+01E-021 temperatura
+022-025 atan2.y
+022     comando_lcd.caracter
+022     @delay_us1.P1
+022-025 pow.x
+022     NTC.@SCRATCH1
+022     MAIN.@SCRATCH1
+022     @PSTRINGC_1063.@SCRATCH1
+023     @delay_ms1.P1
+023     NTC.@SCRATCH2
+023     @PSTRINGC_1063.@SCRATCH2
+024     escreve_lcd.caracter
+024     NTC.@SCRATCH3
+025     NTC.@SCRATCH4
+026-029 atan2.x
+026-029 pow.y
+02A-02D atan2.z
+02A-02D fmod.x
+02A     pow.@SCRATCH1
+02B     pow.@SCRATCH2
+02C     pow.@SCRATCH3
+02D     pow.@SCRATCH4
+02E-031 exp.x
+02E-031 log.x
+02E-031 fmod.y
+02E.0   atan2.sign
+02F     atan2.quad
+032-035 fmod.i
+032-035 exp.y
+032-035 log.y
+036-039 exp.res
+036-039 log.res
+036     fmod.@SCRATCH1
+037     fmod.@SCRATCH2
+038     fmod.@SCRATCH3
+039     fmod.@SCRATCH4
+03A-03D exp.r
+03A-03D floor.x
+03A-03D log.r
+03A-03D ceil.x
+03E-041 CEIL_FLOOR.x
+03E-041 log.y2
+03E     exp.n
+03F.0   exp.s
+040     exp.@SCRATCH1
+041     exp.@SCRATCH2
+042     CEIL_FLOOR.n
+042     log.n
+042     exp.@SCRATCH3
+043-046 CEIL_FLOOR.y
+043     exp.@SCRATCH4
+043     log.@SCRATCH1
+044-045 @SITOF.P1
+044     log.@SCRATCH2
+045     log.@SCRATCH3
+046     log.@SCRATCH4
+047-04A CEIL_FLOOR.res
+047-04A @DIVFF.P1
+04B-04C CEIL_FLOOR.l
+04B-04E @DIVFF.P1
+04D.0   CEIL_FLOOR.s
+04E-051 @SFTOI.P1
+04E-051 @MULFF.P2
+04E-051 @FLT.P3
+04E     CEIL_FLOOR.@SCRATCH1
+04F     @DIVFF.@SCRATCH1
+04F     CEIL_FLOOR.@SCRATCH2
+050     @DIVFF.@SCRATCH2
+050     CEIL_FLOOR.@SCRATCH3
+051     @DIVFF.@SCRATCH3
+051     CEIL_FLOOR.@SCRATCH4
+052-055 @FLT.P1
+052-055 @MULFF.P2
+052-055 @ADDFF.P3
+052-053 @ITOF.P4
+052     @DIVFF.@SCRATCH4
+053     @DIVFF.@SCRATCH5
+054     @DIVFF.@SCRATCH6
+056-059 @ADDFF.P1
+056     @MULFF.@SCRATCH1
+056     @FLT.@SCRATCH1
+057     @MULFF.@SCRATCH2
+057     @FLT.@SCRATCH2
+058     @MULFF.@SCRATCH3
+05A     @ADDFF.@SCRATCH1
+05B     @ADDFF.@SCRATCH2
+05C     @ADDFF.@SCRATCH3
+05D     @ADDFF.@SCRATCH4
+05E     @ADDFF.@SCRATCH5
+05F     @ADDFF.@SCRATCH6
+060     @ADDFF.@SCRATCH7
+061     @ADDFF.@SCRATCH8
+F80.0   NTC
+F80     porta
+F81     portb
+F81.2   RELE_LAMP
+F81.7   PIN_COOLER
+F82     portc
+F83     DISPLAY
+F83     portd
+F83     PSP_DATA
+F84.0   rs
+F84     porte
+F84.1   enable
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @const1083.call
+000008  comando_lcd
+00002C  @delay_ms1
+000054  @delay_us1
+000074  limpa_lcd
+000082  inicializa_lcd
+0000B8  @ITOF
+0000EE  @MULFF
+0001E0  @DIVFF
+00033A  @ADDFF
+0005A4  @FLT
+00061A  @SITOF
+000662  log
+0009A2  @SFTOI
+0009DA  CEIL_FLOOR
+000D0A  ceil
+000D24  floor
+000D3C  fmod
+000E98  exp
+00126A  pow
+001540  NTC
+001800  escreve_lcd
+001826  @PSTRINGC_1063
+001848  @cinit1
+001848  MAIN
+001880  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+
+Project Directory:
+    C:\Users\henri\Documents\GitHub\Projeto-chocadeira\Cod chocadeira sem interrupção\Codigos modularizados\ntc\
+
+Project Files:
+    ntc.c                                                   [21-jun-17 19:52  CRC=ADD70765]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h [12-nov-13 14:35  CRC=5337E248]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h [08-jun-11 14:39  CRC=0B6669CF]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul-10 09:27  CRC=897CEC6C]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [14-jul-11 10:13  CRC=23EDEC8F]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-jan-08 13:55  CRC=2D1F019F]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\math.h [28-set-12 11:35  CRC=546412C9]
+    lcd.h                                                   [05-set-07 18:28  CRC=EF0ACD28]
+
+Source signature=1978DB2F
+
+Units:
+    ntc (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   ntc.xsym
+    Errors:      ntc.err
+    Ext Symbols: ntc.esym
+    INHX32:      ntc.hex
+    Symbols:     ntc.sym
+    List:        ntc.lst
+    Debug/COFF:  ntc.cof
+    Project:     ntc.ccspjt
+    Call Tree:   ntc.tre
+    Statistics:  ntc.STA
