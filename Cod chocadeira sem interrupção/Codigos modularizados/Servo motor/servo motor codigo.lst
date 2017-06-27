@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.015, 5967               24-jun-17 18:13
+CCS PCH C Compiler, Version 5.015, 5967               26-jun-17 16:39
 
                Filename:   C:\Users\henri\Documents\GitHub\Projeto-chocadeira\Cod chocadeira sem interrupção\Codigos modularizados\Servo motor\servo motor codigo.lst
 
@@ -68,7 +68,7 @@ CCS PCH C Compiler, Version 5.015, 5967               24-jun-17 18:13
 .................... unsigned int i ; 
 .................... void mexeovos1(){ 
 .................... // Essa função é responsável por controlar o servo motor que mexe os ovos 
-.................... for( int j=0; j<=1000; j++){ 
+.................... for( int j=0; j<=1000; j++){  // j=50 é cerca de 5 min  
 0044:  CLRF   05
 .................... for(i=0;  i<50; i++){ 
 0046:  CLRF   04
@@ -153,11 +153,6 @@ CCS PCH C Compiler, Version 5.015, 5967               24-jun-17 18:13
 00C8:  GOTO   00E2 (RETURN)
 ....................  
 .................... } 
-....................  
-....................  
-....................  
-....................  
-....................  
 ....................  
 .................... void main(){ 
 00CC:  CLRF   FF8

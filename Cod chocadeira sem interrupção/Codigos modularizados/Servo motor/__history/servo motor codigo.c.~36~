@@ -28,6 +28,11 @@ delay_ms(2000);
 
 }
 
+
+
+
+
+
 void main(){
 set_tris_b(0b11000000);
 mexeovos1();

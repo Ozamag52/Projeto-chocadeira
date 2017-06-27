@@ -1,4 +1,5 @@
->>> Warning 208 "cod_chocadeira_sem_interrupcao.c" Line 155(5,27): Function not void and does not return a value  tratamento_de_bouncing
+>>> Warning 208 "cod_chocadeira_sem_interrupcao.c" Line 153(5,27): Function not void and does not return a value  tratamento_de_bouncing
+>>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 55(5,9): Variable never used:   cont
       Memory usage:   ROM=23%      RAM=3% - 6%
-      0 Errors,  1 Warnings.
+      0 Errors,  2 Warnings.
 Build Successful.

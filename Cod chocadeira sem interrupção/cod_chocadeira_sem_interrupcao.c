@@ -3,9 +3,7 @@
 #DEVICE ADC =10  // seleciona o conversor a/d com 10 bits
 #INCLUDE <stdlib.h>  
 #INCLUDE <math.h> //  Inclui a biblioteca responsavel por fornecer funções de calculos matematicos 
-
 #fuses HS,NOWDT,PUT,NOBROWNOUT,NOLVP   // configuração dos fuses do pic 
-
 #use   delay(clock=20000000)// Informa a função delay, o clock utilizado
 #BIT Data_Pin = 0x06.7                       // Pin mapped to PORTB.7
 #BIT Data_Pin_Direction = 0x86.7             // Pin direction mapped to TRISB.7
@@ -27,12 +25,12 @@
 #bit BOT_BLK_LTH = portb.0 // Pino do botao paraligar a luz do lcd
 #bit BOT_MORE_INF = portb.1 // botao para mais informaçoes no lcd
 // pinos de saida
-
+#bit PIN_SERV = portb.3
 #bit RELE_LAMP = portb.2  //  pino que acionamento do relé da lampada/aquecedor
-#bit PIN_IN1_MOTPAS = portb.3 //  pino de controle do motor de paso via modulo 
+/*#bit PIN_IN1_MOTPAS = portb.3 //  pino de controle do motor de paso via modulo 
 #bit PIN_IN2_MOTPAS = portb.4 //  pino de controle do motor de paso via modulo 
 #bit PIN_IN3_MOTPAS = portb.5 //  pino de controle do motor de paso via modulo 
-#bit PIN_IN4_MOTPAS = portb.6 //  pino de controle do motor de paso via modulo 
+#bit PIN_IN4_MOTPAS = portb.6 //  pino de controle do motor de paso via modulo */
 #bit DHT11 = portb.7 // Pino de acionamento do cooler via transistor 
 #bit rs =porte.0 //  via do lcd que sinaliza recepção de dados ou comando 
 #bit enable = porte.1 // habilita o lcd
@@ -54,7 +52,7 @@ char umidade;//  variavel auxiliar para função do ntc
 const double a = 0.0011303; //  constantes fisicas do sensor ntc 10k
 const double b = 0.0002339; //  constantes fisicas do sensor ntc 10k
 const double c = 0.00000008863; //  constantes fisicas do sensor ntc 10k
-
+int cont=0;
 
 
 // FUNÇÃO POR INICIAR A DHT11
@@ -167,20 +165,41 @@ int tratamento_de_bouncing() {
 }
 
 
-void aciona_stepper_motor() {
-
-
-// Aqui será implementada a função responsavel por acionar o stepper motor 
-
-
+void mexeovos () {
+// Essa função é responsável por controlar o servo motor que mexe os ovos
+for( int j=0; j<=10; j++){  // j=50 é cerca de 5 min 
+ // para garantir que a temperatura varie pouco enquanto o ovosestão mexendo faça  
+   limpa_lcd();
+   comando_lcd(0x83); //  posiciona o cursor no endereço 0x83
+   printf(escreve_lcd,"MEXENDO" );
+   if(j%2==0){
+   RELE_LAMP = 1;
+   PIN_COOLER = 0;
+   }
+     if(j%2!=0){
+     RELE_LAMP = 0;
+     PIN_COOLER =1;
+     }
+// termina aqui esse arficio 
+      for(int i=0;  i<50; i++){                      
+      PIN_SERV=1;
+      delay_us(800);
+      PIN_SERV=0;
+      delay_us(19200);
+      }
+      delay_ms(2000);
+      for(i=0;  i<50; i++){
+      PIN_SERV=1;
+      delay_us(1500);
+      PIN_SERV=0;
+      delay_us(18500);
+      }
+      delay_ms(2000);
+ }
+   
 }
 
-
-
-
-
 void main (void){
-
 setup_adc(ADC_CLOCK_DIV_8); //  configura o clock utilizado para o conversor ad e o pior clock ele usa a malha RC é lenta 
 setup_adc_ports( AN0_TO_AN2 ); // selecionaos pinos A0 a A2 como pinos de sinais analogicos 
 set_tris_a(0b00001111); // verificar se pinos analogicos necessitam de definição de tris
@@ -189,14 +208,15 @@ set_tris_c(0b00000000);// define os pinos RB0 E RB1 como entrada e os demais com
 set_tris_d(0b00000000);  //  Idem como supracitado acima 
 set_tris_e(0b00000100);
 inicializa_lcd(); // função responsavel por inicializar o modulo lcd
-  while(true){
+  mexeovos();
   
+  while(true){
   temperatura = ntc(); //  le o valor  de temperatura em graus celsius que a função do ntc retorna 
   umidade = dht11();
   comando_lcd(0x83); //  posiciona o cursor no endereço 0x83
   printf(escreve_lcd,"%f\n", temperatura );
     // implementação da rotina de controle de  temperatura 
-    if(temperatura<=38){   //  verifica se da temperatura de menor que 38 graus e faz  a rotina 
+   if(temperatura<=38){   //  verifica se da temperatura de menor que 38 graus e faz  a rotina 
      PIN_COOLER =0 ;
      RELE_LAMP = 1 ;
     }

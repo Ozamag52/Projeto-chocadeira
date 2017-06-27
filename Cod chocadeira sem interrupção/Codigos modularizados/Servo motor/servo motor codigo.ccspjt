@@ -12,8 +12,9 @@ Type=4
 [mru-list]
 1=servo motor codigo.c
 [Opened Files]
-1=servo motor codigo.c
-2=
+1=..\..\cod_chocadeira_sem_interrupcao.c
+2=..\..\..\..\..\DOCUMENTOS@\Periodos UFOP\Periodo 17.1\Microcontroladores\Prática5\lcd.c
+3=
 [Units]
 Count=1
 1=servo motor codigo (main)

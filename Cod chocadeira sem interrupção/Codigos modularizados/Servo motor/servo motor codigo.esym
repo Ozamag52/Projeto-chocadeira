@@ -1,8 +1,7 @@
-d G "INT_USB" 1 834 "0x00A020"
-D G "__PCH__" 0 47 ""5.015""
-D G "__DEVICE__" 0 47 "4550"
-D G "__DATE__" 0 47 ""24-jun-17""
-D G "__TIME__" 0 47 ""18:13:57"" "Standard Header file for the PIC18F4550 device ////////////////"
+D G "__PCH__" 0 42 ""5.015""
+D G "__DEVICE__" 0 42 "4550"
+D G "__DATE__" 0 42 ""26-jun-17""
+D G "__TIME__" 0 42 ""16:39:38"" "Standard Header file for the PIC18F4550 device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
 v L "value" 1 45 "int8" `54 
 f B "set_tris_a" 1 45 "void(int8 value)" `53 
@@ -916,7 +915,8 @@ d G "INT_USB" 1 834 "0x00A020"
 V G "i" 0 9 "int8" `648 
 F G "mexeovos1" 0 10 "void()" `649  "Essa função é responsável por controlar o servo motor que mexe os ovos"
 V L "j" 0 12 "int8" `650 
-F G "MAIN" 0 36 "void()" `651 
+C L "mexeovos1" 0 12 1 "FUNCTION"
+F G "MAIN" 0 31 "void()" `651 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1
