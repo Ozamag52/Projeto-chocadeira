@@ -27,10 +27,6 @@
 // pinos de saida
 #bit PIN_SERV = portb.3
 #bit RELE_LAMP = portb.2  //  pino que acionamento do relé da lampada/aquecedor
-/*#bit PIN_IN1_MOTPAS = portb.3 //  pino de controle do motor de paso via modulo 
-#bit PIN_IN2_MOTPAS = portb.4 //  pino de controle do motor de paso via modulo 
-#bit PIN_IN3_MOTPAS = portb.5 //  pino de controle do motor de paso via modulo 
-#bit PIN_IN4_MOTPAS = portb.6 //  pino de controle do motor de paso via modulo */
 #bit DHT11 = portb.7 // Pino de acionamento do cooler via transistor 
 #bit rs =porte.0 //  via do lcd que sinaliza recepção de dados ou comando 
 #bit enable = porte.1 // habilita o lcd
@@ -42,16 +38,16 @@ char message2[] = "RH   = 00.0 %"; //  vetor de mensagem para a umidade
 short Time_out; //  variavel para as funçoes referentes ao sensor de umidade dht11
 unsigned  int8 RH_byte1, RH_byte2, CheckSum; //  variaveis para as funçoes do dht11
 
-double ntc_val = 0; // variavel responsavel por receber o valor digital do ntc
-double rntc = 0; //  valor da resistencia do divisor de tensao do ntc 
-double b1=0;  //  variavel auxiliar para função do ntc
-double c1=0;//  variavel auxiliar para função do ntc
-double temp=0;//  variavel auxiliar para função do ntc
-double temperatura=0;//  variavel auxiliar para função do ntc
+float ntc_val = 0; // variavel responsavel por receber o valor digital do ntc
+float rntc = 0; //  valor da resistencia do divisor de tensao do ntc 
+float b1=0;  //  variavel auxiliar para função do ntc
+float c1=0;//  variavel auxiliar para função do ntc
+float temp=0;//  variavel auxiliar para função do ntc
+float temperatura=0;//  variavel auxiliar para função do ntc
 char umidade;//  variavel auxiliar para função do ntc
-const double a = 0.0011303; //  constantes fisicas do sensor ntc 10k
-const double b = 0.0002339; //  constantes fisicas do sensor ntc 10k
-const double c = 0.00000008863; //  constantes fisicas do sensor ntc 10k
+ double a = 0.0011303; //  constantes fisicas do sensor ntc 10k
+ double b = 0.0002339; //  constantes fisicas do sensor ntc 10k
+ double c = 0.00000008863; //  constantes fisicas do sensor ntc 10k
 int cont=0;
 
 
@@ -128,13 +124,15 @@ char dht11(){
 
 float ntc(){
 set_adc_channel(0); //  escolhe o pino analogico para ler  
-delay_us(10); // delay para começar a conversão 
-ntc_val = read_adc(); // le o valor na porta analogica
-ADC_done();
+delay_us(10); // delay para começar a conversão
+read_adc(ADC_START_ONLY );
+while(!adc_done()){
+}
+ntc_val = read_adc(ADC_READ_ONLY ); // le o valor na porta analogica
 ntc_val *=5; // multiplica o valor digitalizado pelo valor de tensão de alimentação
 ntc_val/=1023;  // divide  o valor acima por 1023
 // Inicio calculo de equação de  Steinhart & Hart 
-rntc=33000/ntc_val;     
+rntc=50000/ntc_val;     
        rntc=rntc-10000;      
        b1=log(rntc);          
        b1=b1*b;               
@@ -144,7 +142,6 @@ rntc=33000/ntc_val;
        temp=a+b1+c1;          
        temp=1/temp;           
        temp=temp-273.15;
-       delay_ms(500);
        return temp;
 // Fim do calculo de equação de  Steinhart & Hart
 }
@@ -200,7 +197,7 @@ for( int j=0; j<=10; j++){  // j=50 é cerca de 5 min
 }
 
 void main (void){
-setup_adc(ADC_CLOCK_DIV_8); //  configura o clock utilizado para o conversor ad e o pior clock ele usa a malha RC é lenta 
+setup_adc(ADC_CLOCK_DIV_32); //  configura o clock utilizado para o conversor ad e o pior clock ele usa a malha RC é lenta 
 setup_adc_ports( AN0_TO_AN2 ); // selecionaos pinos A0 a A2 como pinos de sinais analogicos 
 set_tris_a(0b00001111); // verificar se pinos analogicos necessitam de definição de tris
 set_tris_b(0b11000000);  
@@ -208,13 +205,12 @@ set_tris_c(0b00000000);// define os pinos RB0 E RB1 como entrada e os demais com
 set_tris_d(0b00000000);  //  Idem como supracitado acima 
 set_tris_e(0b00000100);
 inicializa_lcd(); // função responsavel por inicializar o modulo lcd
-  mexeovos();
-  
+
   while(true){
   temperatura = ntc(); //  le o valor  de temperatura em graus celsius que a função do ntc retorna 
   umidade = dht11();
   comando_lcd(0x83); //  posiciona o cursor no endereço 0x83
-  printf(escreve_lcd,"%f\n", temperatura );
+  printf(escreve_lcd,"%f",temperatura);
     // implementação da rotina de controle de  temperatura 
    if(temperatura<=38){   //  verifica se da temperatura de menor que 38 graus e faz  a rotina 
      PIN_COOLER =0 ;
