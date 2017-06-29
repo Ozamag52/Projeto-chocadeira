@@ -1,0 +1,287 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-005 strtok.save
+006-009 _Randseed
+006.7   Data_Pin
+00A-017 message2
+018.0   Time_out
+019     RH_byte1
+01A     RH_byte2
+01B     CheckSum
+01C-01F ntc_val
+020-023 rntc
+024-027 b1
+028-02B c1
+02C-02F temp
+030-033 temperatura
+034     umidade
+035-038 a
+039-03C b
+03D-040 c
+041     cont
+042-043 valor_AD
+044-045 filtro_b1
+046.0   BTN_B1
+046     flags
+047     cont_config
+048-04B value1
+04C-04F set_temp
+050-053 set_umi
+054-057 pow.x
+054-057 @PRINTF_L32D_1072FPFPF.P1
+054     comando_lcd.caracter
+054     @DIV88.P1
+054-057 atan2.y
+054     Read_Data.i
+054     @PSTRINGCN_1072.P1
+054     DHT11.@SCRATCH1
+054     conversao_temp.@SCRATCH1
+054     conversao_umi.@SCRATCH1
+054     configuracao.@SCRATCH1
+054     @PSTRINGC_1072.@SCRATCH1
+054     NTC.@SCRATCH1
+055     @DIV88.P1
+055     @delay_ms1.P2
+055     Read_Data.k
+055     conversao_temp.@SCRATCH2
+055     conversao_umi.@SCRATCH2
+055     @PSTRINGC_1072.@SCRATCH2
+055     @PSTRINGCN_1072.@SCRATCH1
+055     NTC.@SCRATCH2
+056     Read_Data._data
+056     @DIV88.@SCRATCH1
+056     conversao_temp.@SCRATCH3
+056     conversao_umi.@SCRATCH3
+056     @PSTRINGCN_1072.@SCRATCH2
+056     NTC.@SCRATCH3
+057     Read_Data.@SCRATCH1
+057     conversao_temp.@SCRATCH4
+057     conversao_umi.@SCRATCH4
+057     NTC.@SCRATCH4
+058-05B pow.y
+058     @PRINTF_L32D_1072FPFPF.P1
+058-05B atan2.x
+059     @PRINTF_L32D_1072FPFPF.@SCRATCH1
+05A     @PRINTF_L32D_1072FPFPF.@SCRATCH2
+05B     @PRINTF_L32D_1072FPFPF.@SCRATCH3
+05C-05F atan2.z
+05C-05F fmod.x
+05C     pow.@SCRATCH1
+05C     @PRINTF_L32D_1072FPFPF.@SCRATCH4
+05D     pow.@SCRATCH2
+05D     @PRINTF_L32D_1072FPFPF.@SCRATCH5
+05E     pow.@SCRATCH3
+05E     @PRINTF_L32D_1072FPFPF.@SCRATCH6
+05F     pow.@SCRATCH4
+05F     @PRINTF_L32D_1072FPFPF.@SCRATCH7
+060-063 log.x
+060-063 exp.x
+060-063 fmod.y
+060.0   atan2.sign
+060     @PRINTF_L32D_1072FPFPF.@SCRATCH8
+061     escreve_lcd.caracter
+061     atan2.quad
+061-064 @DIV3232.P1
+061-064 @FTOSD.P2
+064-067 exp.y
+064-067 log.y
+064-067 fmod.i
+065-068 @DIV3232.P1
+065     @FTOSD.@SCRATCH1
+068-06B log.res
+068-06B exp.res
+068     fmod.@SCRATCH1
+069     fmod.@SCRATCH2
+069     @DIV3232.@SCRATCH1
+06A     fmod.@SCRATCH3
+06A     @DIV3232.@SCRATCH2
+06B     fmod.@SCRATCH4
+06B     @DIV3232.@SCRATCH3
+06C-06F ceil.x
+06C-06F exp.r
+06C-06F floor.x
+06C-06F log.r
+06C     @DIV3232.@SCRATCH4
+06D     @DIV3232.@SCRATCH5
+070     exp.n
+070-073 CEIL_FLOOR.x
+070-073 log.y2
+071.0   exp.s
+072     exp.@SCRATCH1
+073     exp.@SCRATCH2
+074     CEIL_FLOOR.n
+074     log.n
+074     exp.@SCRATCH3
+075-078 CEIL_FLOOR.y
+075     exp.@SCRATCH4
+075     log.@SCRATCH1
+076-077 @SITOF.P1
+076     log.@SCRATCH2
+077     log.@SCRATCH3
+078     log.@SCRATCH4
+079-07C CEIL_FLOOR.res
+079-07C @DIVFF.P1
+07D-080 @DIVFF.P1
+07D-07E CEIL_FLOOR.l
+07F.0   CEIL_FLOOR.s
+080-083 @MULFF.P1
+080-083 @FLT.P2
+080-083 @SFTOI.P3
+080     CEIL_FLOOR.@SCRATCH1
+081     @DIVFF.@SCRATCH1
+081     CEIL_FLOOR.@SCRATCH2
+082     @DIVFF.@SCRATCH2
+082     CEIL_FLOOR.@SCRATCH3
+083     @DIVFF.@SCRATCH3
+083     CEIL_FLOOR.@SCRATCH4
+084-085 @ITOF.P1
+084-087 @ADDFF.P2
+084-087 @MULFF.P3
+084-087 @FLT.P4
+084     @DIVFF.@SCRATCH4
+085     @DIVFF.@SCRATCH5
+086.7   Data_Pin_Direction
+086     @DIVFF.@SCRATCH6
+088-08B @ADDFF.P1
+088     @MULFF.@SCRATCH1
+088     @FLT.@SCRATCH1
+089     @MULFF.@SCRATCH2
+089     @FLT.@SCRATCH2
+08A     @MULFF.@SCRATCH3
+08C     @ADDFF.@SCRATCH1
+08D     @ADDFF.@SCRATCH2
+08E     @ADDFF.@SCRATCH3
+08F     @ADDFF.@SCRATCH4
+090     @ADDFF.@SCRATCH5
+091     @ADDFF.@SCRATCH6
+092     @ADDFF.@SCRATCH7
+093     @ADDFF.@SCRATCH8
+F80     porta
+F80.0   NTC
+F80.1   POT_SET_TEMP
+F80.2   POT_SET_UMI
+F81     portb
+F81.0   BOT_BLK_LTH
+F81.1   BOT_MORE_INF
+F81.2   RELE_LAMP
+F81.3   PIN_SERV
+F81.4   config_Bot
+F81.7   DHT11
+F82     portc
+F82.0   PIN_COOLER
+F83     portd
+F83     DISPLAY
+F83     PSP_DATA
+F84     porte
+F84.0   rs
+F84.1   enable
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @const1113.call
+000012  @const1115.call
+00001E  @const1116.call
+00002C  @const1117.call
+000042  @const1128.call
+000050  @const1129.call
+000064  @const1130.call
+00007C  @const1131.call
+000094  @const1132.call
+00009C  @const1133.call
+0000AA  @const1134.call
+0000BA  @const1135.call
+0000C2  @const1139.call
+0000CA  comando_lcd
+0000E6  @delay_ms1
+00010C  limpa_lcd
+00011A  inicializa_lcd
+000154  @ITOF
+00018A  @MULFF
+00027C  @DIVFF
+0003D6  @ADDFF
+000640  @FLT
+0006B6  @SITOF
+0006FE  log
+000A3E  @SFTOI
+000A76  CEIL_FLOOR
+000DA6  ceil
+000DC0  floor
+000DD8  fmod
+000F34  exp
+001306  pow
+0015DC  NTC
+0018A8  start_signal
+0018C6  check_response
+0018F8  Read_Data
+001990  @DIV88
+0019B8  DHT11
+001A28  escreve_lcd
+001A44  @PSTRINGC_1072
+001A64  conversao_temp
+001BBE  @PSTRINGCN_1072
+001BDC  @FTOSD
+001C1C  @DIV3232
+001CAA  @PRINTF_L32D_1072FPFPF
+001E24  conversao_umi
+001F80  configuracao
+0021D6  @cinit1
+0021D6  MAIN
+002264  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+
+Project Directory:
+    C:\Users\henri\Documents\GitHub\Projeto-chocadeira\Codigo com a implementação de hugo\
+
+Project Files:
+    cod_chocadeira_sem_interrupcao.c                        [28-jun-17 19:55  CRC=C0904018]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h [12-nov-13 14:35  CRC=5337E248]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h [08-jun-11 14:39  CRC=0B6669CF]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul-10 09:27  CRC=897CEC6C]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [14-jul-11 10:13  CRC=23EDEC8F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-jan-08 13:55  CRC=2D1F019F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\math.h [28-set-12 11:35  CRC=546412C9]
+    lcd.h                                                   [05-set-07 18:28  CRC=EF0ACD28]
+
+Source signature=2C3213E2
+
+Units:
+    cod_chocadeira_sem_interrupcao (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   cod_chocadeira_sem_interrupcao.xsym
+    Errors:      cod_chocadeira_sem_interrupcao.err
+    Ext Symbols: cod_chocadeira_sem_interrupcao.esym
+    INHX32:      cod_chocadeira_sem_interrupcao.hex
+    Symbols:     cod_chocadeira_sem_interrupcao.sym
+    List:        cod_chocadeira_sem_interrupcao.lst
+    Debug/COFF:  cod_chocadeira_sem_interrupcao.cof
+    Project:     cod_chocadeira_sem_interrupcao.ccspjt
+    Call Tree:   cod_chocadeira_sem_interrupcao.tre
+    Statistics:  cod_chocadeira_sem_interrupcao.STA

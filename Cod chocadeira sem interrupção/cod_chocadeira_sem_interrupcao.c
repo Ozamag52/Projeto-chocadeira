@@ -5,8 +5,8 @@
 #INCLUDE <math.h> //  Inclui a biblioteca responsavel por fornecer funções de calculos matematicos 
 #fuses HS,NOWDT,PUT,NOBROWNOUT,NOLVP   // configuração dos fuses do pic 
 #use   delay(clock=20000000)// Informa a função delay, o clock utilizado
-#BIT Data_Pin = 0x06.7                       // Pin mapped to PORTB.7
-#BIT Data_Pin_Direction = 0x86.7             // Pin direction mapped to TRISB.7
+
+//#BIT Data_Pin_Direction = 0xf93.7             // Pin direction mapped to TRISB.7
 #use   fast_io(a)//modo rápido de inicialização das portas
 #use   fast_io(b)//modo rápido de inicialização das portas
 #use   fast_io(d)//modo rápido de inicialização das portas
@@ -24,10 +24,11 @@
 #bit POT_SET_UMI = porta.2 //Pino de leitura do potenciometro de set da umidade 
 #bit BOT_BLK_LTH = portb.0 // Pino do botao paraligar a luz do lcd
 #bit BOT_MORE_INF = portb.1 // botao para mais informaçoes no lcd
+#BIT Data_Pin = portb.7                       // Pin mapped to PORTB.7
 // pinos de saida
 #bit PIN_SERV = portb.3
 #bit RELE_LAMP = portb.2  //  pino que acionamento do relé da lampada/aquecedor
-#bit DHT11 = portb.7 // Pino de acionamento do cooler via transistor 
+//#bit DHT11 = portb.7 
 #bit rs =porte.0 //  via do lcd que sinaliza recepção de dados ou comando 
 #bit enable = porte.1 // habilita o lcd
 #byte DISPLAY = portd //  seleciona o port no qual o lcd esta ligado ( o mesmo valor que esta no arquivo.h)
@@ -49,17 +50,33 @@ char umidade;//  variavel auxiliar para função do ntc
  double b = 0.0002339; //  constantes fisicas do sensor ntc 10k
  double c = 0.00000008863; //  constantes fisicas do sensor ntc 10k
 int cont=0;
+long int cont_int = 0;
+int horas=0;
+#int_timer0
+void trata_tmr0 ()
+{
+   set_timer0(131 + get_timer0());
+   cont_int++;
+   if(cont_int > 2246400) 
+   {
+      cont_int = 0;
+      horas++;      
+   }
+   
+ 
+}
+
 
 
 // FUNÇÃO POR INICIAR A DHT11
 
 void start_signal(){
-  Data_Pin_Direction = 0;              // Configure connection pin as output
+  set_tris_b(0b01000000);//Data_Pin_Direction = 0;              // Configure connection pin as output
   Data_Pin = 0;                        // Connection pin output low
   delay_ms(25);
   Data_Pin = 1;                        // Connection pin output high
   delay_us(30);
-  Data_Pin_Direction = 1;              // Configure connection pin as input
+  set_tris_b(0b11000000);//Data_Pin_Direction = 1;              // Configure connection pin as input
 }
 
 // FUNÇAÕ POR VERIFICAR SE O SENSOR ESTA RESPONDENDO 
@@ -111,9 +128,10 @@ char dht11(){
    RH_byte2=Read_Data();// read RH byte2
    Checksum=Read_Data();// read checksum                   
       if(CheckSum==((RH_Byte1+RH_Byte2)& 0xFF)){
-      message2[7]=RH_Byte1/10+48;
+              message2[7]=RH_Byte1/10+48;
              message2[8]= RH_Byte1%10+48;
-             message2[10] = RH_Byte2/10+48;                            
+             message2[10] = RH_Byte2/10+48;  
+             
        }
    } 
    return message2;
@@ -147,37 +165,13 @@ rntc=50000/ntc_val;
 }
 
 
-int tratamento_de_bouncing() {
 
 
 
-
-//  Aqui será implementada uma função para o tratamento de bouncing de todos os botoes da aplicação 
-
-
-
-
-
-
-}
-
-
-void mexeovos () {
-// Essa função é responsável por controlar o servo motor que mexe os ovos
-for( int j=0; j<=10; j++){  // j=50 é cerca de 5 min 
- // para garantir que a temperatura varie pouco enquanto o ovosestão mexendo faça  
+void mexeovos () { 
    limpa_lcd();
    comando_lcd(0x83); //  posiciona o cursor no endereço 0x83
    printf(escreve_lcd,"MEXENDO" );
-   if(j%2==0){
-   RELE_LAMP = 1;
-   PIN_COOLER = 0;
-   }
-     if(j%2!=0){
-     RELE_LAMP = 0;
-     PIN_COOLER =1;
-     }
-// termina aqui esse arficio 
       for(int i=0;  i<50; i++){                      
       PIN_SERV=1;
       delay_us(800);
@@ -192,7 +186,6 @@ for( int j=0; j<=10; j++){  // j=50 é cerca de 5 min
       delay_us(18500);
       }
       delay_ms(2000);
- }
    
 }
 
@@ -205,12 +198,24 @@ set_tris_c(0b00000000);// define os pinos RB0 E RB1 como entrada e os demais com
 set_tris_d(0b00000000);  //  Idem como supracitado acima 
 set_tris_e(0b00000100);
 inicializa_lcd(); // função responsavel por inicializar o modulo lcd
-
+// CONFIGURA?+O DO TIMER0
+   setup_timer_0 (RTCC_INTERNAL | RTCC_8_BIT | RTCC_DIV_64);
+   set_timer0(131);
+   enable_interrupts(GLOBAL);//chave principal das interrup??es
+   enable_interrupts(int_timer0); // interrup??o do TIMER 0
+  
   while(true){
   temperatura = ntc(); //  le o valor  de temperatura em graus celsius que a função do ntc retorna 
   umidade = dht11();
-  comando_lcd(0x83); //  posiciona o cursor no endereço 0x83
-  printf(escreve_lcd,"%f",temperatura);
+limpa_lcd();
+ comando_lcd(0x83); //  posiciona o cursor no endereço 0x83
+printf(escreve_lcd,"%s",message2);
+
+   if(horas == 3){
+    mexeovos();
+    horas=0;
+    }
+   
     // implementação da rotina de controle de  temperatura 
    if(temperatura<=38){   //  verifica se da temperatura de menor que 38 graus e faz  a rotina 
      PIN_COOLER =0 ;

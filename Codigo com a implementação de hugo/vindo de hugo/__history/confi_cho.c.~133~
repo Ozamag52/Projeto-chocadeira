@@ -1,0 +1,268 @@
+//PROGRAMA de CONFIGURACAO DOS PARAMENTROS DA INCUBADORA
+#include <18F4550.H>   // arquivo de definições do microcontrolador usado
+#fuses HS,NOWDT,PUT,NOBROWNOUT,NOLVP    // bits de configuração
+#define  t_filtro 400 
+#priority timer1
+#DEVICE ADC=10   // indica se a conversao será de 10 bits
+
+// Configurações do Projeto
+#use delay(clock=4000000) // informa ao sistema o frequência de clock, para temporização
+
+//variáveis
+long value; // recebe o valor da conversao AD
+
+long INT filtro_m1  = t_filtro;
+int flags=0; // utilizada para no deboccing para sinalizar
+int cont=0; // variavel q sinaliza quando o botao configuraçao é pressionado por mais de 500ms
+float value1;// auxilia na conversão do valor OBTIDO APOS ADC para TEMPERATURA E UMIDADE
+float temp_max =0;
+float temp_min =0;
+float umidade  =0;
+#bit  BTN_M1 = flags.0 
+
+
+// Definição e inicialização dos ports
+#use   fast_io(a)
+#use   fast_io(b)
+#use   fast_io(c)
+#use   fast_io(d)
+#use   fast_io(e)
+
+
+
+#byte   porta = 0xf80
+#byte   portb = 0xf81
+#byte   portc = 0xf82
+#byte   portd = 0xf83
+#byte   porte = 0xf84
+
+// Definições de Hardware
+  // Entradas
+#bit   config_Bot  = portb.2 // botao para navegação no lcd; auxilia na configuraçao dos parametros
+  // Saídas
+#bit    rs = porte.0     // via do lcd que sinaliza recepção de dados ou comando
+#bit    enable = porte.1 // enable do lcd
+#byte   DISPLAY = portd  //tem que ser a mesma porta escolhida dentro do arquivo lcd.h
+// Bibliotecas
+#include   <lcd.h>  // biblioteca do lcd
+
+// Interrupções
+
+// Sub-funções
+
+// Função Para conversao do valor obtido na ADC, para o fundo de escala trabalhando para a temperatura 0->50 
+void conversao_temp (){  
+
+      set_adc_channel(2); // seleciona o canal 2 do pic, para a ADC
+      while(!adc_done()); // espera o fim enquanto a ADC 
+      value = read_adc(); // lendo o valor da ADC
+      value1= (float)value; // passa o valor de 0 a 1023 para float; atribiu este a variavel auxiliar value1
+      value1= value1*0.5/10.24; // Faz o ajuste de escala 0°->0 e 50°->1023; o valor 0.5 é o resoluçao
+}
+
+// Função Para conversao do valor obtido na ADC, para o fundo de escala trabalhando para a umidade 0->100 
+void conversao_umi (){
+
+      set_adc_channel(2);// seleciona o canal 2 do pic, para a ADC
+      while(!adc_done());// espera o fim enquanto a ADC 
+      value = read_adc();// lendo o valor da ADC
+      value1= (float)value; // passa o valor de 0 a 1023 para float; atribiu este a variavel auxiliar value1
+      value1= value1*10/102.3;// Faz o ajuste de escala 0->0 e 100->1023; o valor 10 é o resoluçao
+}
+
+// Funçao para a configuraçao dos parametros de temperatura e umidade da incubadora
+void configuracao () {
+
+                      cont++;// toda vez que o botao é pressionado o contador é incrementado
+                      limpa_lcd (); // limpa o lcd
+                    if(cont==5){
+                      cont=0;
+                    }
+                    if(cont==1){
+                     printf(escreve_lcd, "CONFIGURACAO");
+                        comando_lcd(0xC0);
+                        printf(escreve_lcd, "INCUBADORA");
+                       
+                        delay_ms (500);
+                    
+                    }
+                   while(cont==1){ // neste primeiro laço a temperatura max. deverá ser definida por meio do poteciometro
+                        conversao_temp ();// chama a funçao para a conversao 
+                        printf(escreve_lcd, "CONFIGURACAO");
+                        comando_lcd(0xC0);// posiciona o cursor no endereço 83h
+                 
+                        printf(escreve_lcd, "Temp.max: %f ", value1);  // escrever no lcd os valores de temperatura correpontedes a variaçao do potenciometro
+                        delay_ms (400); //  delay necessario para que o estado da porta onde o botao está ligado volte ao estado incial apos o aperto.
+                        
+                       /* if(!get_timer1()){
+                            if(cont==1){
+                            temp_max = value1;
+                            
+                             printf(escreve_lcd, "Temp.max: OK ");
+                             delay_ms (5000);
+                            }
+                        }*/ 
+                        
+                        if(config_bot==0){ // ao pressionar o botão por um tempo superior a 500ms Ffinaliza o primeiro laço e entra no segundo laço.
+                            limpa_lcd ();
+                             temp_max = value1;
+                             cont=2;
+                        }
+                   } // fim do 1 laço
+                        while(cont==2){ // Neste segundo laço será defenido o valor da temperatura min. e imprimmi no lcd
+                           conversao_temp (); 
+                          printf(escreve_lcd, "CONFIGURACAO");
+                           comando_lcd(0xC0);
+                           printf(escreve_lcd, "Temp.min: %f ", value1);
+                           delay_ms (400);
+                            
+                            /*if(!get_timer1()){
+                              if( cont==2){
+                                 
+                                 temp_min = value1;
+                                 set_timer1(0);
+                                 
+                                  printf(escreve_lcd, "Temp.MIN: OK ");
+                                  delay_ms (500); 
+                               
+                            }
+                        }*/
+                      
+                           if(config_bot==0){
+                               limpa_lcd ();
+                               temp_min = value1;
+                              cont=3;
+                           }
+                        }//fim do 2 laço
+                            while(cont==3){ // neste terceiro laço será o definido o valor da umidade  e imprimi no lcd
+                              conversao_umi (); 
+                               printf(escreve_lcd, "CONFIGURACAO");
+                              comando_lcd(0xC0);
+                              printf(escreve_lcd, "Umidade:  %f", value1);
+                              delay_ms (400);
+                              
+                             /*if(!get_timer1()){
+                              if( cont==3){
+                                  
+                                  umidade = value1;
+                                  set_timer1(0);
+                                   limpa_lcd();
+                                  printf(escreve_lcd, "UMIDADE: OK ");
+                                  delay_ms (5000); 
+                            }
+                        }*/
+                      
+                      
+                              if(config_bot==0){
+                               limpa_lcd ();
+                               umidade = value1;
+                               cont=4;
+                                }
+                                
+                            }// fim do 3 laço
+                              while(cont==4){ // fim da configuração 
+                              for(int i=0; i=1;i++){
+                              comando_lcd(0x80);
+                              printf(escreve_lcd, "Temp.max:  %f", temp_max);
+                              delay_ms (2000);
+                              comando_lcd(0xC0);
+                              printf(escreve_lcd, "Temp.min:  %f", temp_min);
+                              delay_ms (2000);
+                              comando_lcd(0xC0);
+                              printf(escreve_lcd, "Umidade:   %f", umidade);
+                              delay_ms (2000);
+                              }
+                              
+                              
+                              limpa_lcd();
+                              comando_lcd(0x80);
+                              printf(escreve_lcd, "FIM DA");
+                              comando_lcd(0xC0);
+                              printf(escreve_lcd, "CONFIGURACAO");
+                              delay_ms (1000);
+                              limpa_lcd();
+                              
+                              comando_lcd(0x80);
+                              printf(escreve_lcd, "Aperte o botao");
+                              comando_lcd(0xC0);
+                              printf(escreve_lcd, "INICIAR");
+                              delay_ms (1000);
+                               if(config_bot==0){
+                               limpa_lcd ();
+                               umidade = value1;
+                               cont=5;
+                                }
+                             }
+                          
+
+
+
+} // FIM DA FUNÇÃO CONFIGURAÇAO
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                          Configurações do Pic                           *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+   void main()
+{
+      // configura os tris
+      set_tris_a(0b11111111);
+      set_tris_b(0b11111111);
+      set_tris_c(0b11111111);
+      set_tris_d(0b00000000);
+      set_tris_e(0b00000100);
+
+      // inicializa os ports
+      porta=0x00;            // limpa porta
+      portb=0x00;            // limpa portb
+      portc=0x00;            // limpa portc
+      portd=0x00;            // limpa portd
+      porte=0x00;            // limpa porte
+      
+      setup_adc_ports(AN0_TO_AN2);
+      setup_adc(ADC_CLOCK_DIV_32);            // Built-in A/D setup function
+      //set_adc_channel(2);                       // Built-in A/D setup function
+      setup_timer_1 (T1_EXTERNAL | T1_DIV_BY_1);
+      enable_interrupts(GLOBAL);
+      inicializa_lcd();         // configura o lcd
+      
+      
+  
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                              Rotina principal                           *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+   while(TRUE) {            // rotina principal
+  
+   
+      if (!config_Bot){   // o botao do motor 1 foi pressionado?
+         
+            // sim,
+            if (! (BTN_M1)) // O botão UP já foi tratato ?
+            {
+               // não.
+               if (filtro_m1 != 0) // Fim do filtro do botão UP ?
+                  filtro_m1--; // Não, então decrementa o filtro
+                  else { 
+                      configuracao (); // ao clicar no botão de configuraçao chama a função de configuração, onde serão passados os parametros de temperatura e umidade
+                  }
+             }
+                    
+         }
+                      
+                  
+            
+          else{
+              filtro_m1 = t_filtro;
+              BTN_M1 = 0; 
+      }  
+            
+            
+    }// fim do while
+            
+  }// fim da função principal
+         
+
+       

@@ -1,0 +1,4 @@
+>>> Warning 202 "cod_chocadeira_sem_interrupcao.c" Line 54(6,10): Variable never used:   cont
+      Memory usage:   ROM=28%      RAM=4% - 7%
+      0 Errors,  1 Warnings.
+Build Successful.

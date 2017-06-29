@@ -1,0 +1,20 @@
+[PROJECT]
+Target=cod_chocadeira_sem_interrupcao.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.015
+Compiler=PCH
+[Target Data]
+FileList=cod_chocadeira_sem_interrupcao.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[cod_chocadeira_sem_interrupcao.c]
+Type=4
+[mru-list]
+1=cod_chocadeira_sem_interrupcao.c
+[Opened Files]
+1=cod_chocadeira_sem_interrupcao.c
+2=vindo de hugo\confi_cho.c
+3=
+[Units]
+Count=1
+1=cod_chocadeira_sem_interrupcao (main)

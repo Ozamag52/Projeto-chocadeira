@@ -1,0 +1,168 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-005 valor_AD
+006-007 filtro_b1
+008.0   BTN_B1
+008     flags
+009     cont_config
+00A-00D value1
+00E-011 set_temp
+012-015 set_umi
+016     comando_lcd.caracter
+016-019 @PRINTF_L32D_665FPFPF.P1
+016     @PSTRINGCN_665.P2
+016-019 @ADDFF.P3
+016-017 @ITOF.P4
+016-019 @SFTOI.P5
+016     conversao_temp.@SCRATCH1
+016     conversao_umi.@SCRATCH1
+016     configuracao.@SCRATCH1
+016     @PSTRINGC_665.@SCRATCH1
+017     @delay_ms1.P1
+017     conversao_temp.@SCRATCH2
+017     conversao_umi.@SCRATCH2
+017     @PSTRINGC_665.@SCRATCH2
+017     @PSTRINGCN_665.@SCRATCH1
+018     conversao_temp.@SCRATCH3
+018     conversao_umi.@SCRATCH3
+018     @PSTRINGCN_665.@SCRATCH2
+019     conversao_temp.@SCRATCH4
+019     conversao_umi.@SCRATCH4
+01A     @PRINTF_L32D_665FPFPF.P1
+01A-01D @ADDFF.P2
+01A-01D @DIVFF.P3
+01B     @PRINTF_L32D_665FPFPF.@SCRATCH1
+01C     @PRINTF_L32D_665FPFPF.@SCRATCH2
+01D     @PRINTF_L32D_665FPFPF.@SCRATCH3
+01E-021 @DIVFF.P1
+01E     @ADDFF.@SCRATCH1
+01E     @PRINTF_L32D_665FPFPF.@SCRATCH4
+01F     @ADDFF.@SCRATCH2
+01F     @PRINTF_L32D_665FPFPF.@SCRATCH5
+020     @ADDFF.@SCRATCH3
+020     @PRINTF_L32D_665FPFPF.@SCRATCH6
+021     @ADDFF.@SCRATCH4
+021     @PRINTF_L32D_665FPFPF.@SCRATCH7
+022     @DIVFF.@SCRATCH1
+022     @ADDFF.@SCRATCH5
+022     @PRINTF_L32D_665FPFPF.@SCRATCH8
+023-026 @DIV3232.P1
+023     escreve_lcd.caracter
+023-026 @FTOSD.P1
+023-026 @MULFF.P2
+023     @DIVFF.@SCRATCH2
+023     @ADDFF.@SCRATCH6
+024     @DIVFF.@SCRATCH3
+024     @ADDFF.@SCRATCH7
+025     @DIVFF.@SCRATCH4
+025     @ADDFF.@SCRATCH8
+026     @DIVFF.@SCRATCH5
+027-02A @MULFF.P1
+027-02A @DIV3232.P2
+027     @DIVFF.@SCRATCH6
+027     @FTOSD.@SCRATCH1
+02B     @MULFF.@SCRATCH1
+02B     @DIV3232.@SCRATCH1
+02C     @MULFF.@SCRATCH2
+02C     @DIV3232.@SCRATCH2
+02D     @MULFF.@SCRATCH3
+02D     @DIV3232.@SCRATCH3
+02E     @DIV3232.@SCRATCH4
+02F     @DIV3232.@SCRATCH5
+F80     porta
+F81     portb
+F81.2   config_Bot
+F82     portc
+F83     portd
+F83     DISPLAY
+F83     PSP_DATA
+F84.0   rs
+F84     porte
+F84.1   enable
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @const685.call
+000012  @const687.call
+00001E  @const688.call
+00002C  @const689.call
+000042  @const700.call
+000050  @const701.call
+000064  @const702.call
+00007C  @const703.call
+000094  @const704.call
+00009C  @const705.call
+0000AA  @const706.call
+0000BA  @const707.call
+0000C2  comando_lcd
+0000DC  @delay_ms1
+000104  limpa_lcd
+000112  inicializa_lcd
+00014E  escreve_lcd
+000168  @PSTRINGC_665
+000188  @ITOF
+0001BE  @MULFF
+0002B0  @DIVFF
+00040A  @ADDFF
+000674  @SFTOI
+0006AC  conversao_temp
+0007F8  @PSTRINGCN_665
+000816  @FTOSD
+000856  @DIV3232
+0008E4  @PRINTF_L32D_665FPFPF
+000A64  conversao_umi
+000BBE  configuracao
+000E24  @cinit1
+000E24  MAIN
+000E50  @cinit2
+
+Project Directory:
+    C:\Users\Policarpo\Desktop\configuração chocadeira\
+
+Project Files:
+    confi_cho.c                                             [28-jun-17 19:09  CRC=F51D558E]
+    ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.H  [12-nov-13 14:35  CRC=5337E248]
+    lcd.h                                                   [05-set-07 18:28  CRC=EF0ACD28]
+
+Source signature=266AD226
+
+Units:
+    confi_cho (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   confi_cho.xsym
+    Errors:      confi_cho.err
+    Ext Symbols: confi_cho.esym
+    INHX32:      confi_cho.hex
+    Symbols:     confi_cho.sym
+    List:        confi_cho.lst
+    Debug/COFF:  confi_cho.cof
+    Project:     confi_cho.ccspjt
+    Call Tree:   confi_cho.tre
+    Statistics:  confi_cho.STA

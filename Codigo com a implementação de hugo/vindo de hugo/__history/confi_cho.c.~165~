@@ -1,0 +1,221 @@
+//PROGRAMA de CONFIGURACAO DOS PARAMENTROS DA INCUBADORA
+#include <18F4550.H>   // arquivo de definições do microcontrolador usado
+#fuses HS,NOWDT,PUT,NOBROWNOUT,NOLVP    // bits de configuração
+#define  t_filtro 400 
+#priority timer1
+#DEVICE ADC=10   // indica se a conversao será de 10 bits
+
+// Configurações do Projeto
+#use delay(clock=4000000) // informa ao sistema o frequência de clock, para temporização
+
+//variáveis
+long valor_AD; // recebe o valor da conversao AD
+
+long INT filtro_b1  = t_filtro;
+int flags=0;            // utilizada para no deboccing para sinalizar
+int cont_config=0;            // variavel q sinaliza quando o botao configuraçao é pressionado por mais de 500ms
+float value1;         // auxilia na conversão do valor OBTIDO APOS ADC para TEMPERATURA E UMIDADE
+float set_temp =0;   // valor de refeencia pra temperatura maxima
+float set_umi =0; // valor de referencia para a umidade
+#bit  BTN_B1 = flags.0 
+
+
+// Definição e inicialização dos ports
+#use   fast_io(a)
+#use   fast_io(b)
+#use   fast_io(c)
+#use   fast_io(d)
+#use   fast_io(e)
+
+
+
+#byte   porta = 0xf80
+#byte   portb = 0xf81
+#byte   portc = 0xf82
+#byte   portd = 0xf83
+#byte   porte = 0xf84
+
+// Definições de Hardware
+  // Entradas
+#bit    config_Bot  = portb.2 // botao para navegação no lcd; auxilia na configuraçao dos parametros
+  // Saídas
+#bit    rs = porte.0     // via do lcd que sinaliza recepção de dados ou comando
+#bit    enable = porte.1 // enable do lcd
+#byte   DISPLAY = portd  //tem que ser a mesma porta escolhida dentro do arquivo lcd.h
+// Bibliotecas
+#include   <lcd.h>  // biblioteca do lcd
+
+// Interrupções
+
+// Sub-funções
+
+// Função Para conversao do valor obtido na ADC, para o fundo de escala trabalhando para a temperatura 0->50 
+void conversao_temp (){  
+
+      set_adc_channel(2); // seleciona o canal 2 do pic, para a ADC
+      delay_us(10);
+      while(!adc_done()); // espera o fim enquanto a ADC 
+      valor_AD = read_adc(); // lendo o valor da ADC
+      value1= (float)valor_AD; // passa o valor de 0 a 1023 para float; atribiu este a variavel auxiliar value1
+      value1=value1*0.5/10.23; // Faz o ajuste de escala 0°->0 e 50°->1023; o valor 0.5 é o resoluçao
+      
+      value1 = (float)((int)((value1 + 0.4f) * 2.0f)) * 0.5f;
+}
+
+// Função Para conversao do valor obtido na ADC, para o fundo de escala trabalhando para a umidade 0->100 
+void conversao_umi (){
+
+     set_adc_channel(2);// seleciona o canal 2 do pic, para a ADC
+      delay_us(10);
+      while(!adc_done());// espera o fim enquanto a ADC 
+      valor_AD = read_adc();// lendo o valor da ADC
+      value1= (float)valor_AD; // passa o valor de 0 a 1023 para float; atribiu este a variavel auxiliar value1
+      value1= value1*10/102.3;// Faz o ajuste de escala 0->0 e 100->1023; o valor 10 é o resoluçao
+      value1 = (float)((int)((value1 + 0.4f) * 2.0f)) * 0.5f;
+}
+
+// Funçao para a configuraçao dos parametros de temperatura e umidade da incubadora
+void configuracao () {
+
+                      cont_config++;// toda vez que o botao é pressionado o contador é incrementado
+                      limpa_lcd (); // limpa o lcd
+                    if(cont_config==5){
+                       cont_config=0;
+                    }
+                    if(cont_config==1){
+                        printf(escreve_lcd, "CONFIGURACAO");
+                        comando_lcd(0xC0);
+                        printf(escreve_lcd, "INCUBADORA");
+                       
+                        delay_ms (1000);
+                    
+                    }
+                   while(cont_config==1){ // neste primeiro laço a temperatura max. deverá ser definida por meio do poteciometro
+                        conversao_temp ();// chama a funçao para a conversao 
+                        printf(escreve_lcd, "CONFIGURACAO");
+                        comando_lcd(0xC0);// posiciona o cursor no endereço 83h
+                 
+                        printf(escreve_lcd, "SET TEMP: %.1f       ", value1);  // escrever no lcd os valores de temperatura correpontedes a variaçao do potenciometro
+                        delay_ms (400); //  delay necessario para que o estado da porta onde o botao está ligado volte ao estado incial apos o aperto.
+                     
+                      
+                        
+                        if(config_bot==0){ // ao pressionar o botão por um tempo superior a 500ms Ffinaliza o primeiro laço e entra no segundo laço.
+                            limpa_lcd ();
+                            set_temp = value1; // ATUALIZAÇAO DO VALOR DA VARIAVEL DE REFERENCIA APOS A ESCOLHA DO VALOR ATRAVÉS DO POTENCIOMETRO
+                             cont_config=2;
+                        }
+                   } // fim do 1 laço
+                        while(cont_config==2){ // Neste segundo laço será defenido o valor da temperatura min. e imprimmi no lcd
+                           conversao_umi (); 
+                          printf(escreve_lcd, "CONFIGURACAO");
+                           comando_lcd(0xC0);
+                           printf(escreve_lcd, "SET UMI: %.1f      ", value1);
+                           delay_ms (400);
+                            
+                           
+                      
+                           if(config_bot==0){
+                               limpa_lcd ();
+                               set_umi = value1; // ATUALIZAÇAO DO VALOR DA VARIAVEL DE REFERENCIA APOS A ESCOLHA DO VALOR ATRAVÉS DO POTENCIOMETRO
+                               cont_config=4;
+                           }
+                        }//fim do 2 laço
+                            
+                              while(cont_config==4){ // fim da configuração 
+                              
+                              comando_lcd(0x80);
+                              printf(escreve_lcd, "SET TEMP:  %.1f        ", set_temp);
+                              delay_ms (2000);
+                             
+                              comando_lcd(0xC0);
+                              printf(escreve_lcd, "SET UMI:   %.1f       ", set_umi);
+                              delay_ms (2000);
+                              
+                              cont_config=5;
+                              
+                              
+                              limpa_lcd();
+                              comando_lcd(0x80);
+                              printf(escreve_lcd, "FIM DA");
+                              comando_lcd(0xC0);
+                              printf(escreve_lcd, "CONFIGURACAO");
+                              delay_ms (1000);
+                              limpa_lcd();
+                              
+                              comando_lcd(0x80);
+                              printf(escreve_lcd, "Aperte o botao");
+                              comando_lcd(0xC0);
+                              printf(escreve_lcd, "INICIAR");
+                              delay_ms (1000);
+                              /* 
+                              #### AQUI TERMINA A CONFIGURAÇÃO DOS PARÂMETROS DA INCUBADORA
+                                  AO PRESSIONAR O BOTAO DE CONFIGURAÇÃO  2 VEZES VOLTA-SE PARA CONFIGURAR NOVAMENTE OS
+                                  PARÂMETROS.
+                              
+                              
+                              */
+                             }
+                          
+
+
+
+} // FIM DA FUNÇÃO CONFIGURAÇAO
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                          Configurações do Pic                           *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+   void main() {
+      // configura os tris
+      set_tris_a(0b11111111);
+      set_tris_b(0b11111111);
+      set_tris_c(0b11111111);
+      set_tris_d(0b00000000);
+      set_tris_e(0b00000100);
+
+      // inicializa os ports
+      porta=0x00;            // limpa porta
+      portb=0x00;            // limpa portb
+      portc=0x00;            // limpa portc
+      portd=0x00;            // limpa portd
+      porte=0x00;            // limpa porte
+      
+      setup_adc_ports(AN0_TO_AN2);
+      setup_adc(ADC_CLOCK_DIV_32);            // Built-in A/D setup function
+      //set_adc_channel(2);                       // Built-in A/D setup function
+      setup_timer_1 (T1_EXTERNAL | T1_DIV_BY_1);
+      enable_interrupts(GLOBAL);
+      inicializa_lcd();         // configura o lcd
+      
+      
+  
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                              Rotina principal                           *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+   while(TRUE) {            // rotina principal
+  
+   
+      if (!config_Bot){   // o botao do motor 1 foi pressionado?
+            if (! (BTN_B1)){ // O botão UP já foi tratato ?
+            
+               // não.
+               if (filtro_b1 != 0) // Fim do filtro do botão UP ?
+                  filtro_b1--; // Não, então decrementa o filtro
+                  else { 
+                      configuracao (); // ao clicar no botão de configuraçao chama a função de configuração, onde serão passados os parametros de temperatura e umidade
+                  }
+            }        
+         } 
+          else{
+              filtro_b1 = t_filtro;
+              BTN_B1 = 0; 
+      }       
+    }// fim do while        
+  }// fim da função principal
+         
+
+       

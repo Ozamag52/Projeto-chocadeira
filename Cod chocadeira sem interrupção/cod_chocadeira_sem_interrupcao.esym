@@ -1,8 +1,8 @@
-C L "MAIN" 0 37 1 "FUNCTION"
-D G "__PCH__" 0 263 ""5.015""
-D G "__DEVICE__" 0 263 "4550"
-D G "__DATE__" 0 263 ""28-jun-17""
-D G "__TIME__" 0 263 ""16:37:34"" "Standard Header file for the PIC18F4550 device ////////////////"
+D G "LOG2_INV" 6 2063 "3.32192809488736234787"
+D G "__PCH__" 0 268 ""5.015""
+D G "__DEVICE__" 0 268 "4550"
+D G "__DATE__" 0 268 ""28-jun-17""
+D G "__TIME__" 0 268 ""22:18:44"" "Standard Header file for the PIC18F4550 device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
 v L "value" 1 45 "int8" `54 
 f B "set_tris_a" 1 45 "void(int8 value)" `53 
@@ -1476,13 +1476,13 @@ C L "ldexp" 6 2 6 "FUNCTION"
 V L "value" 6 2209 "float" `1044 
 V L "exp" 6 2209 "sint8" `1045 
 F G "ldexp" 6 2210 "float(float value,sint8 exp)" `1043 
-C L "comando_lcd" 0 8 1 "FUNCTION"
-C L "comando_lcd" 0 8 1 "FUNCTION"
+C L "comando_lcd" 0 9 1 "FUNCTION"
+C L "comando_lcd" 0 9 1 "FUNCTION"
 C L "comando_lcd" 7 1 1 "*"
 C L "comando_lcd" 7 1 1 "*"
 C L "comando_lcd" 7 1 1 "*"
-V L "caracter" 7 5 "int8" `1070 
-F G "comando_lcd" 7 6 "void(int8 caracter)" `1069 
+V L "caracter" 7 5 "int8" `1068 
+F G "comando_lcd" 7 6 "void(int8 caracter)" `1067 
 C L "comando_lcd" 7 1 1 "FUNCTION"
 C L "comando_lcd" 7 1 1 "FUNCTION"
 C L "comando_lcd" 7 1 1 "FUNCTION"
@@ -1493,8 +1493,8 @@ C L "comando_lcd" 7 1 1 "FUNCTION"
 C L "escreve_lcd" 7 18 1 "*"
 C L "escreve_lcd" 7 18 1 "*"
 C L "escreve_lcd" 7 18 1 "*"
-V L "caracter" 7 22 "int8" `1072 
-F G "escreve_lcd" 7 23 "void(int8 caracter)" `1071 
+V L "caracter" 7 22 "int8" `1070 
+F G "escreve_lcd" 7 23 "void(int8 caracter)" `1069 
 C L "escreve_lcd" 7 18 1 "FUNCTION"
 C L "escreve_lcd" 7 18 1 "FUNCTION"
 C L "escreve_lcd" 7 18 1 "FUNCTION"
@@ -1505,12 +1505,12 @@ C L "escreve_lcd" 7 18 1 "FUNCTION"
 C L "limpa_lcd" 7 35 1 "*"
 C L "limpa_lcd" 7 35 1 "*"
 C L "limpa_lcd" 7 35 1 "*"
-F G "limpa_lcd" 7 40 "void()" `1073 
+F G "limpa_lcd" 7 40 "void()" `1071 
 C L "limpa_lcd" 7 35 1 "FUNCTION"
 C L "inicializa_lcd" 7 46 1 "*"
 C L "inicializa_lcd" 7 46 1 "*"
 C L "inicializa_lcd" 7 46 1 "*"
-F G "inicializa_lcd" 7 51 "void()" `1074 
+F G "inicializa_lcd" 7 51 "void()" `1072 
 C L "inicializa_lcd" 7 46 1 "FUNCTION"
 C L "inicializa_lcd" 7 46 1 "FUNCTION"
 C L "inicializa_lcd" 7 46 1 "FUNCTION"
@@ -1521,73 +1521,74 @@ C L "inicializa_lcd" 7 46 1 "FUNCTION"
 C L "inicializa_lcd" 7 46 1 "FUNCTION"
 C L "inicializa_lcd" 7 46 1 "FUNCTION"
 C L "inicializa_lcd" 7 46 1 "FUNCTION"
-V G "message2" 0 37 "int8[1]" `1075 
-V G "Time_out" 0 38 "int1" `1076  "variavel para as funçoes referentes ao sensor de umidade dht11"
-V G "RH_byte1" 0 39 "int8" `1077 
-V G "RH_byte2" 0 39 "int8" `1078 
-V G "CheckSum" 0 39 "int8" `1079  "variaveis para as funçoes do dht11"
-V G "ntc_val" 0 41 "float" `1080 
-V G "rntc" 0 42 "float" `1081 
-V G "b1" 0 43 "float" `1082 
-V G "c1" 0 44 "float" `1083 
-V G "temp" 0 45 "float" `1084 
-V G "temperatura" 0 46 "float" `1085 
-V G "umidade" 0 47 "int8" `1086  "variavel auxiliar para função do ntc"
-V G "a" 0 48 "float" `1087 
-V G "b" 0 49 "float" `1088 
-V G "c" 0 50 "float" `1089 
-V G "cont" 0 51 "int8" `1090 
-C L "start_signal" 0 37 1 "FUNCTION"
-F G "start_signal" 0 56 "void()" `1091 
-C L "start_signal" 0 37 1 "FUNCTION"
-C L "start_signal" 0 37 1 "FUNCTION"
-C L "start_signal" 0 37 1 "FUNCTION"
-C L "start_signal" 0 37 1 "FUNCTION"
-C L "check_response" 0 37 1 "FUNCTION"
-F G "check_response" 0 67 "int8()" `1092 
-C L "check_response" 0 37 1 "FUNCTION"
-C L "check_response" 0 37 1 "FUNCTION"
-C L "Read_Data" 0 37 1 "FUNCTION"
-F G "Read_Data" 0 79 "int8()" `1093 
-V L "i" 0 80 "int8" `1094 
-V L "k" 0 80 "int8" `1095 
-V L "_data" 0 80 "int8" `1096 
-C L "Read_Data" 0 37 1 "FUNCTION"
-C L "Read_Data" 0 37 1 "FUNCTION"
-C L "Read_Data" 0 37 1 "FUNCTION"
-C L "Read_Data" 0 37 1 "FUNCTION"
-C L "Read_Data" 0 37 1 "FUNCTION"
-C L "DHT11" 0 37 1 "FUNCTION"
-F G "DHT11" 0 105 "int8()" `1097 
-C L "DHT11" 0 37 1 "FUNCTION"
-C L "DHT11" 0 37 1 "FUNCTION"
-C L "DHT11" 0 37 1 "FUNCTION"
-C L "DHT11" 0 37 1 "FUNCTION"
-F G "NTC" 0 125 "float()" `1101 
-C L "NTC" 0 37 1 "FUNCTION"
-C L "NTC" 0 37 1 "FUNCTION"
-C L "NTC" 0 37 1 "FUNCTION"
-C L "NTC" 0 37 1 "FUNCTION"
-C L "NTC" 0 37 2 "FUNCTION"
-C L "NTC" 0 37 1 "FUNCTION"
-F G "tratamento_de_bouncing" 0 150 "int8()" `1102  "Aqui será implementada uma função para o tratamento de bouncing de todos os botoes da aplicação"
-F G "mexeovos" 0 165 "void()" `1103  "Essa função é responsável por controlar o servo motor que mexe os ovos"
-V L "j" 0 167 "int8" `1104 
-C L "mexeovos" 0 37 2 "FUNCTION"
-C L "mexeovos" 0 37 1 "FUNCTION"
-C L "mexeovos" 0 37 1 "FUNCTION"
-V L "i" 0 181 "int8" `1107 
-F G "MAIN" 0 199 "void()" `1108 
-C L "MAIN" 0 37 1 "FUNCTION"
-C L "MAIN" 0 37 1 "FUNCTION"
-C L "MAIN" 0 37 1 "FUNCTION"
-C L "MAIN" 0 37 1 "FUNCTION"
-C L "MAIN" 0 37 1 "FUNCTION"
-C L "MAIN" 0 37 1 "FUNCTION"
-C L "MAIN" 0 37 1 "FUNCTION"
-C L "MAIN" 0 37 1 "FUNCTION"
-C L "MAIN" 0 37 1 "FUNCTION"
-C L "MAIN" 0 37 1 "FUNCTION"
+V G "message2" 0 38 "int8[1]" `1073 
+V G "Time_out" 0 39 "int1" `1074  "variavel para as funçoes referentes ao sensor de umidade dht11"
+V G "RH_byte1" 0 40 "int8" `1075 
+V G "RH_byte2" 0 40 "int8" `1076 
+V G "CheckSum" 0 40 "int8" `1077  "variaveis para as funçoes do dht11"
+V G "ntc_val" 0 42 "float" `1078 
+V G "rntc" 0 43 "float" `1079 
+V G "b1" 0 44 "float" `1080 
+V G "c1" 0 45 "float" `1081 
+V G "temp" 0 46 "float" `1082 
+V G "temperatura" 0 47 "float" `1083 
+V G "umidade" 0 48 "int8" `1084  "variavel auxiliar para função do ntc"
+V G "a" 0 49 "float" `1085 
+V G "b" 0 50 "float" `1086 
+V G "c" 0 51 "float" `1087 
+V G "cont" 0 52 "int8" `1088 
+V G "cont_int" 0 53 "int16" `1089 
+V G "horas" 0 54 "int8" `1090 
+F G "trata_tmr0" 0 57 "void()" `1091 
+C L "start_signal" 0 38 1 "FUNCTION"
+F G "start_signal" 0 73 "void()" `1092 
+C L "start_signal" 0 38 1 "FUNCTION"
+C L "start_signal" 0 38 1 "FUNCTION"
+C L "start_signal" 0 38 1 "FUNCTION"
+C L "start_signal" 0 38 1 "FUNCTION"
+C L "check_response" 0 38 1 "FUNCTION"
+F G "check_response" 0 84 "int8()" `1093 
+C L "check_response" 0 38 1 "FUNCTION"
+C L "check_response" 0 38 1 "FUNCTION"
+C L "Read_Data" 0 38 1 "FUNCTION"
+F G "Read_Data" 0 96 "int8()" `1094 
+V L "i" 0 97 "int8" `1095 
+V L "k" 0 97 "int8" `1096 
+V L "_data" 0 97 "int8" `1097 
+C L "Read_Data" 0 38 1 "FUNCTION"
+C L "Read_Data" 0 38 1 "FUNCTION"
+C L "Read_Data" 0 38 1 "FUNCTION"
+C L "Read_Data" 0 38 1 "FUNCTION"
+C L "Read_Data" 0 38 1 "FUNCTION"
+C L "dht11" 0 38 1 "FUNCTION"
+F G "dht11" 0 122 "int8()" `1098 
+C L "dht11" 0 38 1 "FUNCTION"
+C L "dht11" 0 38 1 "FUNCTION"
+C L "dht11" 0 38 1 "FUNCTION"
+C L "dht11" 0 38 1 "FUNCTION"
+F G "NTC" 0 143 "float()" `1102 
+C L "NTC" 0 38 1 "FUNCTION"
+C L "NTC" 0 38 1 "FUNCTION"
+C L "NTC" 0 38 1 "FUNCTION"
+C L "NTC" 0 38 1 "FUNCTION"
+C L "NTC" 0 38 2 "FUNCTION"
+C L "NTC" 0 38 1 "FUNCTION"
+F G "mexeovos" 0 171 "void()" `1103 
+C L "mexeovos" 0 38 1 "FUNCTION"
+V L "i" 0 175 "int8" `1106 
+F G "MAIN" 0 192 "void()" `1107 
+C L "MAIN" 0 38 1 "FUNCTION"
+C L "MAIN" 0 38 1 "FUNCTION"
+C L "MAIN" 0 38 1 "FUNCTION"
+C L "MAIN" 0 38 1 "FUNCTION"
+C L "MAIN" 0 38 1 "FUNCTION"
+C L "MAIN" 0 38 2 "FUNCTION"
+C L "MAIN" 0 38 1 "FUNCTION"
+C L "MAIN" 0 38 1 "FUNCTION"
+C L "MAIN" 0 38 1 "FUNCTION"
+C L "MAIN" 0 38 1 "FUNCTION"
+C L "MAIN" 0 38 1 "FUNCTION"
+C L "MAIN" 0 38 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

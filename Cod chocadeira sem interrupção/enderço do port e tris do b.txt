@@ -1,0 +1,4 @@
+portb   trisb
+f81h    f93h
+
+
