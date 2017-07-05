@@ -57,7 +57,7 @@ void trata_tmr0 ()
 {
    set_timer0(131 + get_timer0());
    cont_int++;
-   if(cont_int > 2246400) 
+   if(cont_int > 37440) 
    {
       cont_int = 0;
       horas++;      

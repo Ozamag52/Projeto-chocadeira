@@ -1,6 +1,6 @@
 
-ROM used:   7340/32768 (22%)
-            7340/32768 (22%) including unused fragments
+ROM used:   7362/32768 (22%)
+            7362/32768 (22%) including unused fragments
 
             1.4 Average locations per line
             8.2 Average locations per statement
@@ -46,38 +46,38 @@ Page ROM  %  RAM   Vol Diff  Functions:
 0     28   0    1   132  2.2  escreve_lcd
 0     14   0    0    40  1.3  limpa_lcd
 0     58   0    0   176  1.8  inicializa_lcd
-0     32   0    2   106  3.3  trata_tmr0
+0     54   0    2   106  3.3  trata_tmr0
 0     34   0    0   108  1.7  start_signal
 0     50   0    0   106  2.5  check_response
 0    152   1    4   662  7.6  Read_Data
 0    112   1    1   431  5.6  dht11
-0     40   0    3   662  7.6  @DIV88
+0     40   0    3             @DIV88
 0    716   5    4   606  6.6  NTC
 0    162   1    1   458  3.7  mexeovos
-0      8   0    0   458  3.7  @const1104
-0     34   0    2   513  3.7  @PSTRINGC_1069
-0    368   3    0   757  5.2  MAIN
-0     38   0    2             @PSTRINGR_1069
+0      8   0    0             @const1104
+0     34   0    2             @PSTRINGC_1069
+0    368   2    0   757  5.2  MAIN
+0     38   0    2  2910  4.4  @PSTRINGR_1069
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               22
+    Functions               20
     Statements              896
     Comments                1305
-    Volume (V)              16175
-    Difficulty (D)          105.7
-    Effort to implement (E) 1709308
-    Time to implement (T)   26 hours, 23 minutes
+    Volume (V)              17258
+    Difficulty (D)          95.2
+    Effort to implement (E) 1642359
+    Time to implement (T)   25 hours, 21 minutes
     Est Delivered Bugs (B)  5
-    Cyclomatic Complexity   41
-    Maintainability (MI)    47
+    Cyclomatic Complexity   39
+    Maintainability (MI)    71
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
 00008-00094   142  0  
-00096-07FFE  7194  25424  
+00096-07FFE  7216  25402  
 
 
 

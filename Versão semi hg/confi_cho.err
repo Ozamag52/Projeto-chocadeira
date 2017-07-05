@@ -1,0 +1,5 @@
+>>> Warning 206 "confi_cho.c" Line 85(1,1): Variable of this data type is never greater than this constant
+>>> Warning 204 "confi_cho.c" Line 85(1,1): Condition always FALSE
+      Memory usage:   ROM=33%      RAM=5% - 9%
+      0 Errors,  2 Warnings.
+Build Successful.

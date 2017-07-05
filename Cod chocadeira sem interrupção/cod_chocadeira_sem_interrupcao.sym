@@ -182,39 +182,39 @@ FF6-FF8 @READ_PROGRAM_MEMORY.P2
 
 ROM Allocation:
 000096  trata_tmr0
-0000B6  @const1104.call
-0000BE  comando_lcd
-0000DA  @delay_ms1
-000100  limpa_lcd
-00010E  inicializa_lcd
-000148  @ITOF
-00017E  @MULFF
-000270  @DIVFF
-0003CA  @ADDFF
-000634  @FLT
-0006AA  @SITOF
-0006F2  log
-000A32  @SFTOI
-000A6A  CEIL_FLOOR
-000D9A  ceil
-000DB4  floor
-000DCC  fmod
-000F28  exp
-0012FA  pow
-0015D0  NTC
-00189C  start_signal
-0018BE  check_response
-0018F0  Read_Data
-001988  @DIV88
-0019B0  dht11
-001A20  escreve_lcd
-001A3C  @PSTRINGR_1069
-001A62  @PSTRINGC_1069
-001A84  @delay_us1
-001A9E  mexeovos
-001B40  @cinit1
-001B40  MAIN
-001BBA  @cinit2
+0000CC  @const1104.call
+0000D4  comando_lcd
+0000F0  @delay_ms1
+000116  limpa_lcd
+000124  inicializa_lcd
+00015E  @ITOF
+000194  @MULFF
+000286  @DIVFF
+0003E0  @ADDFF
+00064A  @FLT
+0006C0  @SITOF
+000708  log
+000A48  @SFTOI
+000A80  CEIL_FLOOR
+000DB0  ceil
+000DCA  floor
+000DE2  fmod
+000F3E  exp
+001310  pow
+0015E6  NTC
+0018B2  start_signal
+0018D4  check_response
+001906  Read_Data
+00199E  @DIV88
+0019C6  dht11
+001A36  escreve_lcd
+001A52  @PSTRINGR_1069
+001A78  @PSTRINGC_1069
+001A9A  @delay_us1
+001AB4  mexeovos
+001B56  @cinit1
+001B56  MAIN
+001BD0  @cinit2
 0136  StrtoulGO
 0136  StrtolGO
 
@@ -222,7 +222,7 @@ Project Directory:
     C:\Users\henri\Documents\GitHub\Projeto-chocadeira\Cod chocadeira sem interrupção\
 
 Project Files:
-    cod_chocadeira_sem_interrupcao.c                        [28-jun-17 22:18  CRC=0262C019]
+    cod_chocadeira_sem_interrupcao.c                        [29-jun-17 15:38  CRC=91F27619]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4550.h [12-nov-13 14:35  CRC=5337E248]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h [08-jun-11 14:39  CRC=0B6669CF]
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [16-jul-10 09:27  CRC=897CEC6C]
@@ -231,7 +231,7 @@ Project Files:
     ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\math.h [28-set-12 11:35  CRC=546412C9]
     lcd.h                                                   [05-set-07 18:28  CRC=EF0ACD28]
 
-Source signature=6E0493E3
+Source signature=FD9449E3
 
 Units:
     cod_chocadeira_sem_interrupcao (main)

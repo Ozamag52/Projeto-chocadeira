@@ -1,0 +1,346 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+006.7   Data_Pin
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016-017 strtok.save
+018-01B _Randseed
+01C-029 message2
+02A.0   Time_out
+02B     RH_byte1
+02C     RH_byte2
+02D     CheckSum
+02E-031 ntc_val
+032-035 rntc
+036-039 b1
+03A-03D c1
+03E-041 temp
+042-045 temperatura
+046     umidade
+047-04A a
+04B-04E b
+04F-052 c
+053     cont
+054-055 cont_int
+056     horas
+057     cont_ini
+058     cont_aux
+059     cont_rotina
+05A-05B valor_AD
+05C-05D filtro_b1
+05E-05F filtro_INI
+060.0   BTN_B1
+060     flags
+060.1   BTN_INI
+060.2   UNLOCK
+061     cont_config
+062-065 value1
+066-069 set_temp
+06A-06D set_umi
+06E-071 atan2.y
+06E     mexeovos.i
+06E     @DIV88.P1
+06E     @PSTRINGCN_1070.P2
+06E     Read_Data.i
+06E-071 pow.x
+06E-071 @PRINTF_L32D_1070FPFPF.P1
+06E     DHT11.@SCRATCH1
+06E     NTC.@SCRATCH1
+06E     conversao_temp.@SCRATCH1
+06E     conversao_umi.@SCRATCH1
+06E     configuracao.@SCRATCH1
+06E     MAIN.@SCRATCH1
+06F     Read_Data.k
+06F     @DIV88.P1
+06F     comando_lcd.caracter
+06F     NTC.@SCRATCH2
+06F     mexeovos.@SCRATCH1
+06F     @PSTRINGC_1070.@SCRATCH1
+06F     conversao_temp.@SCRATCH2
+06F     conversao_umi.@SCRATCH2
+06F     @PSTRINGCN_1070.@SCRATCH1
+070     Read_Data._data
+070     @delay_us1.P1
+070     @delay_ms1.P2
+070     @DIV88.@SCRATCH1
+070     NTC.@SCRATCH3
+070     @PSTRINGC_1070.@SCRATCH2
+070     conversao_temp.@SCRATCH3
+070     conversao_umi.@SCRATCH3
+070     @PSTRINGCN_1070.@SCRATCH2
+071     Read_Data.@SCRATCH1
+071     NTC.@SCRATCH4
+071     conversao_temp.@SCRATCH4
+071     conversao_umi.@SCRATCH4
+072-075 atan2.x
+072     @PRINTF_L32D_1070FPFPF.P1
+072-075 pow.y
+073     @PRINTF_L32D_1070FPFPF.@SCRATCH1
+074     @PRINTF_L32D_1070FPFPF.@SCRATCH2
+075     @PRINTF_L32D_1070FPFPF.@SCRATCH3
+076-079 atan2.z
+076-079 fmod.x
+076     pow.@SCRATCH1
+076     @PRINTF_L32D_1070FPFPF.@SCRATCH4
+077     pow.@SCRATCH2
+077     @PRINTF_L32D_1070FPFPF.@SCRATCH5
+078     pow.@SCRATCH3
+078     @PRINTF_L32D_1070FPFPF.@SCRATCH6
+079     pow.@SCRATCH4
+079     @PRINTF_L32D_1070FPFPF.@SCRATCH7
+07A-07D exp.x
+07A-07D fmod.y
+07A-07D log.x
+07A.0   atan2.sign
+07A     @PRINTF_L32D_1070FPFPF.@SCRATCH8
+07B     atan2.quad
+07B-07E @FTOSD.P1
+07B     escreve_lcd.caracter
+07B-07E @DIV3232.P1
+07E-081 fmod.i
+07E-081 log.y
+07E-081 exp.y
+07F-082 @DIV3232.P1
+07F     @FTOSD.@SCRATCH1
+082-085 log.res
+082-085 exp.res
+082     fmod.@SCRATCH1
+083     fmod.@SCRATCH2
+083     @DIV3232.@SCRATCH1
+084     fmod.@SCRATCH3
+084     @DIV3232.@SCRATCH2
+085     fmod.@SCRATCH4
+085     @DIV3232.@SCRATCH3
+086-089 floor.x
+086-089 ceil.x
+086-089 exp.r
+086-089 log.r
+086.7   Data_Pin_Direction
+086     @DIV3232.@SCRATCH4
+087     @DIV3232.@SCRATCH5
+08A     exp.n
+08A-08D CEIL_FLOOR.x
+08A-08D log.y2
+08B.0   exp.s
+08C     exp.@SCRATCH1
+08D     exp.@SCRATCH2
+08E     log.n
+08E     CEIL_FLOOR.n
+08E     exp.@SCRATCH3
+08F-092 CEIL_FLOOR.y
+08F     exp.@SCRATCH4
+08F     log.@SCRATCH1
+090-091 @SITOF.P1
+090     log.@SCRATCH2
+091     log.@SCRATCH3
+092     log.@SCRATCH4
+093-096 @DIVFF.P1
+093-096 CEIL_FLOOR.res
+097-098 CEIL_FLOOR.l
+097-09A @DIVFF.P1
+099.0   CEIL_FLOOR.s
+09A-09D @MULFF.P1
+09A-09D @FLT.P2
+09A-09D @SFTOI.P3
+09A     CEIL_FLOOR.@SCRATCH1
+09B     @DIVFF.@SCRATCH1
+09B     CEIL_FLOOR.@SCRATCH2
+09C     @DIVFF.@SCRATCH2
+09C     CEIL_FLOOR.@SCRATCH3
+09D     @DIVFF.@SCRATCH3
+09D     CEIL_FLOOR.@SCRATCH4
+09E-0A1 @MULFF.P1
+09E-0A1 @ADDFF.P2
+09E-0A1 @FLT.P3
+09E-09F @ITOF.P4
+09E     @DIVFF.@SCRATCH4
+09F     @DIVFF.@SCRATCH5
+0A0     @DIVFF.@SCRATCH6
+0A2-0A5 @ADDFF.P1
+0A2     @MULFF.@SCRATCH1
+0A2     @FLT.@SCRATCH1
+0A3     @MULFF.@SCRATCH2
+0A3     @FLT.@SCRATCH2
+0A4     @MULFF.@SCRATCH3
+0A6     @ADDFF.@SCRATCH1
+0A7     @ADDFF.@SCRATCH2
+0A8     @ADDFF.@SCRATCH3
+0A9     @ADDFF.@SCRATCH4
+0AA     @ADDFF.@SCRATCH5
+0AB     @ADDFF.@SCRATCH6
+0AC     @ADDFF.@SCRATCH7
+0AD     @ADDFF.@SCRATCH8
+0AE     trata_tmr0.@SCRATCH1
+0AF     trata_tmr0.@SCRATCH2
+F80     porta
+F80.0   NTC
+F81     portb
+F81.0   BOT_BLK_LTH
+F81.1   BOT_INI
+F81.2   RELE_LAMP
+F81.3   PIN_SERV
+F81.4   config_Bot
+F81.7   DHT11
+F82.0   PIN_COOLER
+F82     portc
+F83     portd
+F83     DISPLAY
+F83     PSP_DATA
+F84     porte
+F84.0   rs
+F84.1   enable
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000096  trata_tmr0
+0000B6  @const1119.call
+0000BE  @const1125.call
+0000CC  @const1126.call
+0000D8  @const1127.call
+0000E6  @const1128.call
+0000FC  @const1139.call
+00010A  @const1140.call
+00011E  @const1141.call
+000126  @const1142.call
+000134  @const1143.call
+00014C  @const1144.call
+000164  @const1145.call
+000170  @const1146.call
+00017E  @const1147.call
+00018C  @const1148.call
+00019E  @const1149.call
+0001AC  @const1150.call
+0001BA  @const1151.call
+0001C8  @const1152.call
+0001D4  @const1153.call
+0001E0  @const1154.call
+0001EC  @const1158.call
+0001F8  @const1159.call
+000200  @const1160.call
+000210  @const1161.call
+00021E  @const1162.call
+00022E  @const1163.call
+00023C  @const1164.call
+000246  @const1165.call
+000256  @const1166.call
+000266  @const1167.call
+000270  @const1168.call
+000280  @const1169.call
+00028C  @const1170.call
+000298  @const1172.call
+0002A2  @const1173.call
+0002AC  @const1174.call
+0002BA  @const1175.call
+0002D2  @const1176.call
+0002EA  comando_lcd
+000306  @delay_ms1
+00032C  limpa_lcd
+00033A  inicializa_lcd
+000374  escreve_lcd
+000390  @PSTRINGC_1070
+0003B0  @ITOF
+0003E6  @MULFF
+0004D8  @DIVFF
+000632  @ADDFF
+00089C  @FLT
+000912  @SITOF
+00095A  log
+000C9A  @SFTOI
+000CD2  CEIL_FLOOR
+001002  ceil
+00101C  floor
+001034  fmod
+001190  exp
+001562  pow
+001838  NTC
+001B04  start_signal
+001B22  check_response
+001B54  Read_Data
+001BEC  @DIV88
+001C14  DHT11
+001C84  @delay_us1
+001C9E  mexeovos
+001D42  @PSTRINGCN_1070
+001D62  @FTOSD
+001DA2  @DIV3232
+001E30  @PRINTF_L32D_1070FPFPF
+001FB2  conversao_temp
+00210E  conversao_umi
+00226C  configuracao
+0025CE  @cinit1
+0025CE  MAIN
+002672  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+
+Project Directory:
+    C:\Users\henri\Documents\GitHub\Projeto-chocadeira\Versão semi hg\
+
+Project Files:
+    confi_cho.c                                             [29-jun-17 15:27  CRC=6CC970E9]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h [12-nov-13 14:35  CRC=5337E248]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h [08-jun-11 14:39  CRC=0B6669CF]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\stddef.h [16-jul-10 09:27  CRC=897CEC6C]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\string.h [14-jul-11 10:13  CRC=23EDEC8F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h [03-jan-08 13:55  CRC=2D1F019F]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\math.h [28-set-12 11:35  CRC=546412C9]
+    lcd.h                                                   [05-set-07 18:28  CRC=EF0ACD28]
+
+Source signature=D86B44B3
+
+Units:
+    confi_cho (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   confi_cho.xsym
+    Errors:      confi_cho.err
+    Ext Symbols: confi_cho.esym
+    INHX32:      confi_cho.hex
+    Symbols:     confi_cho.sym
+    List:        confi_cho.lst
+    Debug/COFF:  confi_cho.cof
+    Project:     confi_cho.ccspjt
+    Call Tree:   confi_cho.tre
+    Statistics:  confi_cho.STA
